@@ -13,7 +13,6 @@ import {
 class Notice extends Component {
   render() {
     this.state = {
-      id: "1",
       pictures: [
         "https://picsum.photos/200",
         "https://picsum.photos/200",
@@ -41,18 +40,11 @@ class Notice extends Component {
     // );
 
     return (
-      <div key={this.props.id} style={{ marginBottom: "20px" }}>
+      <div>
         <Card>
           <Row>
             <Col sm="4">
-              <CardImg
-                style={{
-                  width: "100%",
-                  borderRadius: "5%",
-                  marginBottom: "20px"
-                }}
-                src="https://picsum.photos/200"
-              />
+              <CardImg src="https://picsum.photos/200" />
             </Col>
           </Row>
           <CardBody>
