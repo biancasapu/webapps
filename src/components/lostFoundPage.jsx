@@ -4,11 +4,13 @@ import Notice from "./notice";
 import { Row, Col } from "reactstrap";
 
 class LostFoundPage extends Component {
-  render() {
+  constructor(props) {
+    super(props);
     this.state = {
       notices: [<Notice />, <Notice />, <Notice />, <Notice />]
     };
-
+  }
+  render() {
     var noticeArr = (
       <Col md={{ size: 8, offset: 3 }}>
         {this.state.notices.map(notice => (
