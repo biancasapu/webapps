@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./header";
 import Notice from "./notice";
-import { Row, Col } from "reactstrap";
+import { Row, Container } from "reactstrap";
 
 class LostFoundPage extends Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class LostFoundPage extends Component {
   }
   render() {
     var noticeArr = (
-      <Col md={{ size: 8, offset: 3 }}>
+      <Container>
         {this.state.notices.map(notice => (
-          <Row>{notice}</Row>
+          <div>{notice}</div>
         ))}
-      </Col>
+      </Container>
     );
 
     return (

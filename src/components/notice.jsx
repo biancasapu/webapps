@@ -26,7 +26,7 @@ class Notice extends Component {
 
   render() {
     var cardImg = (
-      <Row>
+      <Row className="mt-3 ml-2 mr-2">
         {this.state.pictures.map(picture => (
           <Col sm="4">
             <CardImg
