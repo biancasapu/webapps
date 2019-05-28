@@ -44,7 +44,7 @@ class Notice extends Component {
         <Card>
           <Row>
             <Col sm="4">
-              <CardImg src="https://picsum.photos/200" />
+              <CardImg />
             </Col>
           </Row>
           <CardBody>
