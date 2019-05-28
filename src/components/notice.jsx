@@ -12,15 +12,15 @@ import {
 
 class Notice extends Component {
   render() {
-    this.state = {
-      pictures: [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ],
-      description: "Hello I lost my dog",
-      details: "Phone: +447521244348"
-    };
+    // this.state = {
+    //   pictures: [
+    //     "https://picsum.photos/200",
+    //     "https://picsum.photos/200",
+    //     "https://picsum.photos/200"
+    //   ],
+    //   description: "Hello I lost my dog",
+    //   details: "Phone: +447521244348"
+    // };
 
     // var cardImg = (
     //   <Row>
