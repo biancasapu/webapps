@@ -32,7 +32,7 @@ class Notice extends Component {
             <CardImg
               style={{
                 width: "100%",
-                borderRadius: "5%",
+                borderRadius: "10%",
                 marginBottom: "20px"
               }}
               src={picture}
@@ -45,9 +45,7 @@ class Notice extends Component {
     return (
       <div style={{ marginBottom: "20px" }}>
         <Card>
-          <Row>
-            <Col sm="4">{cardImg}</Col>
-          </Row>
+          {cardImg}
           <CardBody>
             <CardTitle>Lost Dog</CardTitle>
             <CardSubtitle>{this.state.description}</CardSubtitle>
