@@ -16,11 +16,7 @@ class Notice extends Component {
 
     this.state = {
       id,
-      pictures: [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ],
+      pictures: [],
       description: "Hello I lost my dog",
       details: "Phone: +447521244348"
     };
