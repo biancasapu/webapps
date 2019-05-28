@@ -12,10 +12,8 @@ import {
 
 class Notice extends Component {
   render() {
-    const id = this.props;
-
     this.state = {
-      id,
+      id: "1",
       pictures: [
         "https://picsum.photos/200",
         "https://picsum.photos/200",
