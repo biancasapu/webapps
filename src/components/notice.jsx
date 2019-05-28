@@ -41,7 +41,7 @@ class Notice extends Component {
     // );
 
     return (
-      <div key={id} style={{ marginBottom: "20px" }}>
+      <div key={this.props.id} style={{ marginBottom: "20px" }}>
         <Card>
           <Row>
             <Col sm="4">
