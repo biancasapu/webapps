@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./header";
 import Notice from "./notice";
-import { Row, Container } from "reactstrap";
+import { Container } from "reactstrap";
 
 class LostFoundPage extends Component {
   constructor(props) {
