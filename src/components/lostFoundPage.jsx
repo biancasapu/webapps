@@ -6,6 +6,7 @@ import { Container } from "reactstrap";
 class LostFoundPage extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       notices: [<Notice />, <Notice />, <Notice />, <Notice />]
     };

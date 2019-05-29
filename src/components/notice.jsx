@@ -9,11 +9,15 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
+require("any-promise/register/q");
+
+//var rp = require("request-promise-any");
 
 class Notice extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: "Hi",
       pictures: [
         "https://picsum.photos/200",
         "https://picsum.photos/200",
@@ -22,23 +26,35 @@ class Notice extends Component {
       description: "Hello I lost my dog",
       details: "Phone: +447521244348"
     };
+
+    fetch("http://localhost:8080/hello/_id")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+        this.state.title = response.DATA[0]._id;
+        console.log(this.state.title);
+        this.forceUpdate();
+      });
   }
 
   render() {
     var cardImg = (
       <Row className="mt-3 ml-2 mr-2">
-        {this.state.pictures.map(picture => (
-          <Col sm="4">
-            <CardImg
-              style={{
-                width: "100%",
-                borderRadius: "10%",
-                marginBottom: "20px"
-              }}
-              src={picture}
-            />
-          </Col>
-        ))}
+        {this.state.pictures &&
+          this.state.pictures.map(picture => (
+            <Col sm="4">
+              <CardImg
+                style={{
+                  width: "100%",
+                  borderRadius: "10%",
+                  marginBottom: "20px"
+                }}
+                src={picture}
+              />
+            </Col>
+          ))}
       </Row>
     );
 
@@ -47,7 +63,7 @@ class Notice extends Component {
         <Card>
           {cardImg}
           <CardBody>
-            <CardTitle>Lost Dog</CardTitle>
+            <CardTitle> {this.state.title}</CardTitle>
             <CardSubtitle>{this.state.description}</CardSubtitle>
             <CardText>{this.state.details}</CardText>
             <Button>Help!</Button>

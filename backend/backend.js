@@ -1,6 +1,11 @@
 const express = require('express')
-
+var cors = require('cors')
 const app = express()
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 
 app.set('port', process.env.PORT || 8080)
 
