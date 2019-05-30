@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 require("any-promise/register/q");
 
-const heroku = "http://webapps05backend.herokuapp.com:8080/hello/id";
+const heroku = "http://webapps05backend.herokuapp.com/hello/id";
 
 //var rp = require("request-promise-any");
 

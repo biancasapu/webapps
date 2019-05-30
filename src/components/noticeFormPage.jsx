@@ -17,15 +17,107 @@ class NoticeFormPage extends Component {
     this.state = {
       title: "",
       community: "",
-      description: ""
+      description: "",
+      species: "",
+      colour: "",
+      picture1: "",
+      picture2: "",
+      picture3: "",
+      tags: ""
     };
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleCommunityChange = this.handleCommunityChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
+    this.handleColourChange = this.handleColourChange.bind(this);
+    this.handlePicture1Change = this.handlePicture1Change.bind(this);
+    this.handlePicture2Change = this.handlePicture2Change.bind(this);
+    this.handlePicture3Change = this.handlePicture3Change.bind(this);
+    this.handleTagsChange = this.handleTagsChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleTitleChange(event) {
+    this.setState({ title: event.target.value });
+    console.log(this.state);
+  }
+
+  handleCommunityChange(event) {
+    this.setState({ community: event.target.value });
+    console.log(this.state);
+  }
+
+  handleDescriptionChange(event) {
+    this.setState({ description: event.target.value });
+    console.log(this.state);
+  }
+
+  handleSpeciesChange(event) {
+    this.setState({ species: event.target.value });
+    console.log(this.state);
+  }
+
+  handleColourChange(event) {
+    this.setState({ colour: event.target.value });
+    console.log(this.state);
+  }
+
+  handlePicture1Change(event) {
+    this.setState({ picture1: event.target.value });
+    console.log(this.state);
+  }
+  handlePicture2Change(event) {
+    this.setState({ picture2: event.target.value });
+    console.log(this.state);
+  }
+
+  handlePicture3Change(event) {
+    this.setState({ picture3: event.target.value });
+    console.log(this.state);
+  }
+
+  handleTagsChange(event) {
+    this.setState({ tags: event.target.value });
+    console.log(this.state);
+  }
+
+  handleSubmit() {
+    var maxId;
+    fetch("http://webapps05backend.herokuapp.com/notice/max(id)")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+        maxId = parseInt(response.DATA[0].max ? response.DATA[0].max : "0") + 1;
+        console.log(maxId);
+        return maxId;
+      })
+      .then(maxId => {
+        fetch("http://webapps05backend.herokuapp.com/submit", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: maxId,
+            title: this.state.title,
+            community: this.state.community,
+            description: this.state.description,
+            tags:
+              this.state.tags +
+              " " +
+              this.state.species +
+              " " +
+              this.state.colour
+          })
+        });
+      });
   }
 
   render() {
     return (
       <div>
         <Header />
-        <Container fullHeight>
+        <Container style={{ marginTop: "20px" }}>
           <Form>
             <FormGroup row>
               <Label sm={2}> Title </Label>
@@ -95,9 +187,7 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label sm={2} for="exampleFile">
-                Image
-              </Label>
+              <Label sm={2}>Image</Label>
               <Col sm={3}>
                 <Input
                   type="file"
@@ -117,6 +207,25 @@ class NoticeFormPage extends Component {
                   style={{ marginBottom: "5px" }}
                 />
               </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label sm={2} for="exampleFile">
+                Tags
+              </Label>
+              <Col>
+                <Input
+                  type="text"
+                  name="tags"
+                  style={{ marginBottom: "5px" }}
+                  onChange={this.handleTagsChange}
+                />
+                <FormText color="muted">
+                  Enter your tags, separatds by a comma
+                </FormText>
+              </Col>
+            </FormGroup>
+            <FormGroup>
+              <Button onClick={this.handleSubmit}> Submit </Button>
             </FormGroup>
           </Form>
         </Container>
