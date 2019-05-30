@@ -83,7 +83,7 @@ class NoticeFormPage extends Component {
 
   handleSubmit() {
     var maxId;
-    fetch("http://webapps05backend.herokuapp.com/notice/max(id)")
+    fetch("https://webapps05backend.herokuapp.com/notice/max(id)")
       .then(function(response) {
         return response.json();
       })
@@ -94,7 +94,7 @@ class NoticeFormPage extends Component {
         return maxId;
       })
       .then(maxId => {
-        fetch("http://webapps05backend.herokuapp.com/submit", {
+        fetch("https://webapps05backend.herokuapp.com/submit", {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
