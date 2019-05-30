@@ -103,11 +103,11 @@ class NoticeFormPage extends Component {
             community: this.state.community,
             description: this.state.description,
             tags:
-              this.state.tags +
+              this.state.tags.toLowerCase +
               " " +
-              this.state.species +
+              this.state.species.toLowerCase +
               " " +
-              this.state.colour
+              this.state.colour.toLowerCase
           })
         });
       });
@@ -135,9 +135,11 @@ class NoticeFormPage extends Component {
                 <Input
                   type="select"
                   name="community"
+                  placeholder="choose"
                   value={this.state.community}
                   onChange={this.handleCommunityChange}
                 >
+                  <option />
                   <option>London</option>
                   <option>Nottingham</option>
                   <option>Brighton</option>
@@ -165,6 +167,7 @@ class NoticeFormPage extends Component {
                   value={this.state.species}
                   onChange={this.handleSpeciesChange}
                 >
+                  <option />
                   <option>Dog</option>
                   <option>Cat</option>
                   <option>Bird</option>
@@ -179,6 +182,7 @@ class NoticeFormPage extends Component {
                   value={this.state.colour}
                   onChange={this.handleColourChange}
                 >
+                  <option />
                   <option>Black</option>
                   <option>White</option>
                   <option>Orange</option>
@@ -220,7 +224,7 @@ class NoticeFormPage extends Component {
                   onChange={this.handleTagsChange}
                 />
                 <FormText color="muted">
-                  Enter your tags, separatds by a comma
+                  Enter your tags, separated by a comma
                 </FormText>
               </Col>
             </FormGroup>
