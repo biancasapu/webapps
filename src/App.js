@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 //import Header from "./components/header";
-import NoticeFormPage from "./components/noticeFormPage";
+import LostFoundPage from "./components/lostFoundPage";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NoticeFormPage />
+        <LostFoundPage />
       </div>
     );
   }

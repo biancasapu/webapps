@@ -11,37 +11,23 @@ import {
 } from "reactstrap";
 require("any-promise/register/q");
 
-const heroku = "http://webapps05backend.herokuapp.com/hello/id";
-
 //var rp = require("request-promise-any");
 
 class Notice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "Hi",
       pictures: [
         "https://picsum.photos/200",
         "https://picsum.photos/200",
         "https://picsum.photos/200"
-      ],
-      description: "Hello I lost my dog",
-      details: "Phone: +447521244348"
+      ]
     };
-
-    fetch(heroku)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(response => {
-        console.log(response);
-        this.state.title = response.DATA[0].id;
-        console.log(this.state.title);
-        this.forceUpdate();
-      });
   }
 
   render() {
+    const { id, title, description, tags, community } = this.props;
+
     var cardImg = (
       <Row className="mt-3 ml-2 mr-2">
         {this.state.pictures &&
@@ -61,13 +47,14 @@ class Notice extends Component {
     );
 
     return (
-      <div style={{ marginBottom: "20px" }}>
+      <div key={id} style={{ marginBottom: "20px" }}>
         <Card>
           {cardImg}
           <CardBody>
-            <CardTitle> {this.state.title}</CardTitle>
-            <CardSubtitle>{this.state.description}</CardSubtitle>
-            <CardText>{this.state.details}</CardText>
+            <CardTitle> {title}</CardTitle>
+            <CardSubtitle>{community}</CardSubtitle>
+            <CardText>{description}</CardText>
+            <CardText>{tags}</CardText>
             <Button>Help!</Button>
           </CardBody>
         </Card>

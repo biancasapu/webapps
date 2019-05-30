@@ -9,8 +9,7 @@ import {
   FormText,
   Col
 } from "reactstrap";
-import Header from "./header";
-
+//import Header from "./header";
 class NoticeFormPage extends Component {
   constructor(props) {
     super(props);
@@ -116,7 +115,6 @@ class NoticeFormPage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <Container style={{ marginTop: "20px" }}>
           <Form>
             <FormGroup row>
@@ -192,7 +190,7 @@ class NoticeFormPage extends Component {
             </FormGroup>
             <FormGroup row>
               <Label sm={2}>Image</Label>
-              <Col sm={3}>
+              <Col sm={5}>
                 <Input
                   type="file"
                   name="pic1"
