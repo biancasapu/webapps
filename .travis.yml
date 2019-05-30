@@ -20,14 +20,7 @@ jobs:
       deploy: &heroku
         provider: heroku
         app: webapps05
-        api-key: $HEROKU_KEY1
+        api-key: $HEROKU_KEY
       on:
         branch: master
-    - stage: deploy backend
-      script: skip
-      deploy: &heroku
-        provider: heroku
-        app: webapps05backend
-        api-key: $HEROKU_KEY2
-      on:
-        branch: master
+    
