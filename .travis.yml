@@ -15,11 +15,19 @@ jobs:
       script: npm test
     - stage: compile
       script: npm run build
-    - stage: deploy
+    - stage: deploy frontend
       script: skip
       deploy: &heroku
         provider: heroku
         app: webapps05
-        api-key: $HEROKU_KEY
+        api-key: $HEROKU_KEY1
+      on:
+        branch: master
+    - stage: deploy backend
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: webapps05backend
+        api-key: $HEROKU_KEY2
       on:
         branch: master

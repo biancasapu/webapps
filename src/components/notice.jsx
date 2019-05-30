@@ -11,6 +11,8 @@ import {
 } from "reactstrap";
 require("any-promise/register/q");
 
+const heroku = "http://webapps05backend.herokuapp.com:8080/hello/id";
+
 //var rp = require("request-promise-any");
 
 class Notice extends Component {
@@ -27,13 +29,13 @@ class Notice extends Component {
       details: "Phone: +447521244348"
     };
 
-    fetch("http://localhost:8080/hello/_id")
+    fetch(heroku)
       .then(function(response) {
         return response.json();
       })
       .then(response => {
         console.log(response);
-        this.state.title = response.DATA[0]._id;
+        this.state.title = response.DATA[0].id;
         console.log(this.state.title);
         this.forceUpdate();
       });

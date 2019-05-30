@@ -18,7 +18,7 @@
     "request-promise-any": "^1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"node backend/backend.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
