@@ -115,11 +115,13 @@ class NoticeFormPage extends Component {
           title: "",
           community: "",
           description: "",
-          tags: "",
+          species: "",
+          colour: "",
           picture1: "",
           picture2: "",
           picture3: "",
-          visible: true
+          tags: "",
+          visible: false
         });
 
         setTimeout(() => {
