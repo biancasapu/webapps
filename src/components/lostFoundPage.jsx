@@ -39,7 +39,6 @@ class LostFoundPage extends Component {
   }
 
   componentDidMount() {
-    console.log("Hi");
     setInterval(() => {
       fetch("https://webapps05backend.herokuapp.com/notice/*")
         .then(function(response) {

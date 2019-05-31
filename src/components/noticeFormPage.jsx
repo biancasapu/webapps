@@ -253,7 +253,7 @@ class NoticeFormPage extends Component {
             isOpen={this.state.visible}
             toggle={this.onDismiss}
           >
-            Sumbitting your notice...
+            Submitting your notice...
           </Alert>
         </Container>
       </div>
