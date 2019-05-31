@@ -4,64 +4,30 @@ import Notice from "./notice";
 import { Container } from "reactstrap";
 import NoticeFormPage from "./noticeFormPage";
 
-export var ns = [
-  {
-    id: "1",
-    title: "Example",
-    community: "Birmingham",
-    description: "I lost my dog pls help Ill give you good $$$",
-    tags: " Bird Orange",
-    pictures: null
-  },
-  {
-    id: "2",
-    title: "TitleExample",
-    community: "Nottingham",
-    description: "I wanna find my dog",
-    tags: "huge Dog ",
-    pictures: null
-  },
-  {
-    id: "3",
-    title: "Lost Cat",
-    community: "Brighton",
-    description: "I lost my cat 2 days ago",
-    tags: "fluffy Cat White",
-    pictures: null
-  },
-  {
-    id: "4",
-    title: "Hello",
-    community: "Liverpool",
-    description: "My parrot is missing",
-    tags: null
-  }
-];
-
 class LostFoundPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notices: ns.map(notice => (
-        <Notice
-          id={notice.id}
-          title={notice.title}
-          community={notice.community}
-          description={notice.description}
-          tags={notice.tags}
-        />
-      ))
+      notices: []
     };
   }
+
   render() {
-    var noticeArr = (
-      <Container>
-        {this.state.notices.map(notice => (
-          <div>{notice}</div>
-        ))}
-      </Container>
-    );
+    const not = this.state
+      ? this.state.notices.map(notice => (
+          <div>
+            <Notice
+              id={notice.id}
+              title={notice.title}
+              community={notice.community}
+              description={notice.description}
+              tags={notice.tags}
+            />
+          </div>
+        ))
+      : "";
+    var noticeArr = <Container>{not}</Container>;
 
     return (
       <div style={{ background: "#e6e6ca" }}>
@@ -70,6 +36,17 @@ class LostFoundPage extends Component {
         <div>{noticeArr}</div>
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log("Hi");
+    fetch("https://webapps05backend.herokuapp.com/notice/*")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        this.setState({ notices: response.DATA });
+      });
   }
 }
 

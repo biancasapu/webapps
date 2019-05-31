@@ -102,11 +102,11 @@ class NoticeFormPage extends Component {
             community: this.state.community,
             description: this.state.description,
             tags:
-              this.state.tags.toLowerCase +
+              this.state.tags +
               " " +
-              this.state.species.toLowerCase +
+              this.state.species +
               " " +
-              this.state.colour.toLowerCase
+              this.state.colour
           })
         });
       });
