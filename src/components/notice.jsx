@@ -18,9 +18,9 @@ class Notice extends Component {
     super(props);
     this.state = {
       pictures: [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
+        "https://i.imgur.com/6hETUDz.jpg",
+        "https://i.imgur.com/6hETUDz.jpg",
+        "https://i.imgur.com/6hETUDz.jpg"
       ]
     };
   }
@@ -54,7 +54,7 @@ class Notice extends Component {
             <CardTitle> {title}</CardTitle>
             <CardSubtitle>{community}</CardSubtitle>
             <CardText>{description}</CardText>
-            <CardText>{tags}</CardText>
+            <CardText className="text-muted">{tags}</CardText>
             <Button>Help!</Button>
           </CardBody>
         </Card>

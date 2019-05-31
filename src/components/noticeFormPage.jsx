@@ -7,7 +7,8 @@ import {
   Label,
   Input,
   FormText,
-  Col
+  Col,
+  Alert
 } from "reactstrap";
 //import Header from "./header";
 class NoticeFormPage extends Component {
@@ -22,7 +23,8 @@ class NoticeFormPage extends Component {
       picture1: "",
       picture2: "",
       picture3: "",
-      tags: ""
+      tags: "",
+      visible: false
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleCommunityChange = this.handleCommunityChange.bind(this);
@@ -102,13 +104,29 @@ class NoticeFormPage extends Component {
             community: this.state.community,
             description: this.state.description,
             tags:
-              this.state.tags +
+              String.prototype.toLowerCase.apply(this.state.species) +
               " " +
-              this.state.species +
+              String.prototype.toLowerCase.apply(this.state.colour) +
               " " +
-              this.state.colour
+              String.prototype.toLowerCase.apply(this.state.tags)
           })
         });
+        this.setState({
+          title: "",
+          community: "",
+          description: "",
+          tags: "",
+          picture1: "",
+          picture2: "",
+          picture3: "",
+          visible: true
+        });
+
+        setTimeout(() => {
+          this.setState({
+            visible: false
+          });
+        }, 3000);
       });
   }
 
@@ -230,6 +248,13 @@ class NoticeFormPage extends Component {
               <Button onClick={this.handleSubmit}> Submit </Button>
             </FormGroup>
           </Form>
+          <Alert
+            color="success"
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}
+          >
+            Sumbitting your notice...
+          </Alert>
         </Container>
       </div>
     );
