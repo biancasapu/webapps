@@ -47,7 +47,7 @@ class LostFoundPage extends Component {
         .then(response => {
           this.setState({ notices: response.DATA });
         });
-    }, 3000);
+    }, 5000);
   }
 }
 

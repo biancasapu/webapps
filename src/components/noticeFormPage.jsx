@@ -84,7 +84,7 @@ class NoticeFormPage extends Component {
 
   handleSubmit() {
     var maxId;
-    fetch("https://webapps05backend.herokuapp.com/notice/max(id)")
+    fetch("https://webapps05backend.herokuapp.com/notice/max/id")
       .then(function(response) {
         return response.json();
       })
@@ -121,7 +121,7 @@ class NoticeFormPage extends Component {
           picture2: "",
           picture3: "",
           tags: "",
-          visible: false
+          visible: true
         });
 
         setTimeout(() => {
