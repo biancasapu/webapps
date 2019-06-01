@@ -26,12 +26,40 @@ class Notice extends Component {
   }
 
   render() {
-    const { id, title, description, tags, community } = this.props;
+    const {
+      id,
+      title,
+      description,
+      tags,
+      community,
+      pic1,
+      pic2,
+      pic3
+    } = this.props;
 
-    var cardImg = (
-      <Row className="mt-3 ml-2 mr-2">
-        {this.state.pictures &&
-          this.state.pictures.map(picture => (
+    // var cardImg = (
+    //   <Row className="mt-3 ml-2 mr-2">
+    //     {this.state.pictures &&
+    //       this.state.pictures.map(picture => (
+    //         <Col sm="4">
+    //           <CardImg
+    //             style={{
+    //               width: "100%",
+    //               borderRadius: "10%",
+    //               marginBottom: "20px"
+    //             }}
+    //             src={picture}
+    //           />
+    //         </Col>
+    //       ))}
+    //   </Row>
+    // );
+
+    return (
+      <div key={id} style={{ marginBottom: "20px" }}>
+        <Card>
+          {/* {cardImg} */}
+          <Row className="mt-3 ml-2 mr-2">
             <Col sm="4">
               <CardImg
                 style={{
@@ -39,17 +67,30 @@ class Notice extends Component {
                   borderRadius: "10%",
                   marginBottom: "20px"
                 }}
-                src={picture}
+                src={pic1}
               />
             </Col>
-          ))}
-      </Row>
-    );
-
-    return (
-      <div key={id} style={{ marginBottom: "20px" }}>
-        <Card>
-          {cardImg}
+            <Col sm="4">
+              <CardImg
+                style={{
+                  width: "100%",
+                  borderRadius: "10%",
+                  marginBottom: "20px"
+                }}
+                src={pic2}
+              />
+            </Col>
+            <Col sm="4">
+              <CardImg
+                style={{
+                  width: "100%",
+                  borderRadius: "10%",
+                  marginBottom: "20px"
+                }}
+                src={pic3 ? pic3 : null}
+              />
+            </Col>
+          </Row>
           <CardBody>
             <CardTitle> {title}</CardTitle>
             <CardSubtitle>{community}</CardSubtitle>
