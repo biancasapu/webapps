@@ -23,6 +23,9 @@ class LostFoundPage extends Component {
               community={notice.community}
               description={notice.description}
               tags={notice.tags}
+              pic1={notice.pic1}
+              pic2={notice.pic2}
+              pic3={notice.pic3}
             />
           </div>
         ))
