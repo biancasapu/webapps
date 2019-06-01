@@ -20,9 +20,9 @@ class NoticeFormPage extends Component {
       description: "",
       species: "",
       colour: "",
-      picture1: "",
-      picture2: "",
-      picture3: "",
+      pic1: "",
+      pic2: "",
+      pic3: "",
       tags: "",
       visible: false
     };
@@ -36,6 +36,47 @@ class NoticeFormPage extends Component {
     this.handlePicture3Change = this.handlePicture3Change.bind(this);
     this.handleTagsChange = this.handleTagsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  uploadImage(picNo) {
+    const r = new XMLHttpRequest();
+    const d = new FormData();
+    const e = document.getElementById("input-image")[0].files[0];
+    var u;
+
+    d.append("image", e);
+
+    r.open("POST", "https://api.imgur.com/3/image");
+    r.setRequestHeader("Authorization", "Client-ID 3bfb02e2365a65e");
+    r.onreadystatechange = function() {
+      if (r.status === 200 && r.readyState === 4) {
+        let res = JSON / parse(r.responseText);
+        u = `https://i.imgur.com/${res.data.id}.png`;
+        picNo == 1 ? this.setState({pic1: u}) :
+        (picNo == 2 ? this.setState({pic2: u})  :
+          this.setState({pic3: u}) ) 
+        const d = document.createElement("div");
+        d.className = "image";
+        document.getElementsByTagName("body")[0].appendChild(d);
+
+        const i = document.createElement("img");
+        i.className = "image-src";
+        i.src = u;
+        document.getElementsByClassName("image")[0].appendChild(i);
+
+        const a = document.createElement("a");
+        a.className = "image-link";
+        a.href = u;
+        document.getElementsByClassName("image")[0].appendChild(a);
+
+        const p = document.createElement("p");
+        p.className = "image-url";
+        p.innerHTML = u;
+        document.getElementsByClassName("image-link")[0].appendChild(p);
+      }
+    };
+
+    r.send(d);
   }
 
   handleTitleChange(event) {
@@ -108,7 +149,10 @@ class NoticeFormPage extends Component {
               " " +
               String.prototype.toLowerCase.apply(this.state.colour) +
               " " +
-              String.prototype.toLowerCase.apply(this.state.tags)
+              String.prototype.toLowerCase.apply(this.state.tags),
+              pic1: this.state.pic1,
+              pic2: this.state.pic2,
+              pic3: this.state.pic3
           })
         });
         this.setState({
@@ -214,18 +258,24 @@ class NoticeFormPage extends Component {
                 <Input
                   type="file"
                   name="pic1"
+                  className="input-image"
+                  onChange={this.uploadImage("pic3").bind(this)}
                   style={{ marginBottom: "5px" }}
                 />
 
                 <Input
                   type="file"
                   name="pic1"
+                  className="input-image"
+                  onChange={this.uploadImage("pic2").bind(this)}
                   style={{ marginBottom: "5px" }}
                 />
 
                 <Input
                   type="file"
-                  name="pic1"
+                  name="pic3"
+                  className="input-image"
+                  onChange={this.uploadImage("pic3")).bind(this)}
                   style={{ marginBottom: "5px" }}
                 />
               </Col>
