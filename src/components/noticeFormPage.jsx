@@ -31,48 +31,57 @@ class NoticeFormPage extends Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleColourChange = this.handleColourChange.bind(this);
-    this.handlePicture1Change = this.handlePicture1Change.bind(this);
-    this.handlePicture2Change = this.handlePicture2Change.bind(this);
-    this.handlePicture3Change = this.handlePicture3Change.bind(this);
+    this.handlePic1Change = this.handlePic1Change.bind(this);
+    this.handlePic2Change = this.handlePic2Change.bind(this);
+    this.handlePic3Change = this.handlePic3Change.bind(this);
     this.handleTagsChange = this.handleTagsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
-  uploadImage(picNo) {
+  async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
     const d = new FormData();
-    const e = document.getElementById("input-image")[0].files[0];
     var u;
 
     d.append("image", e);
 
-    r.open("POST", "https://api.imgur.com/3/image");
+    r.open("POST", "https://api.imgur.com/3/image", false);
     r.setRequestHeader("Authorization", "Client-ID 3bfb02e2365a65e");
-    r.onreadystatechange = function() {
+    r.onreadystatechange = () => {
       if (r.status === 200 && r.readyState === 4) {
-        let res = JSON / parse(r.responseText);
-        u = `https://i.imgur.com/${res.data.id}.png`;
-        picNo == 1 ? this.setState({pic1: u}) :
-        (picNo == 2 ? this.setState({pic2: u})  :
-          this.setState({pic3: u}) ) 
-        const d = document.createElement("div");
-        d.className = "image";
-        document.getElementsByTagName("body")[0].appendChild(d);
+        let res = JSON.parse(r.responseText);
+        u = "https://i.imgur.com/" + res.data.id + ".png";
+        if (picNo === 1) {
+          this.setState({ pic1: u });
+          console.log(this.state.pic1);
+        }
+        if (picNo === 2) {
+          this.setState({ pic2: u });
+        }
 
-        const i = document.createElement("img");
-        i.className = "image-src";
-        i.src = u;
-        document.getElementsByClassName("image")[0].appendChild(i);
+        if (picNo === 3) {
+          this.setState({ pic3: u });
+        }
 
-        const a = document.createElement("a");
-        a.className = "image-link";
-        a.href = u;
-        document.getElementsByClassName("image")[0].appendChild(a);
+        // const d = document.createElement("div");
+        // d.className = "image";
+        // document.getElementsByTagName("body")[0].appendChild(d);
 
-        const p = document.createElement("p");
-        p.className = "image-url";
-        p.innerHTML = u;
-        document.getElementsByClassName("image-link")[0].appendChild(p);
+        // const i = document.createElement("img");
+        // i.className = "image-src";
+        // i.src = u;
+        // document.getElementsByClassName("image")[0].appendChild(i);
+
+        // const a = document.createElement("a");
+        // a.className = "image-link";
+        // a.href = u;
+        // document.getElementsByClassName("image")[0].appendChild(a);
+
+        // const p = document.createElement("p");
+        // p.className = "image-url";
+        // p.innerHTML = u;
+        // document.getElementsByClassName("image-link")[0].appendChild(p);
       }
     };
 
@@ -104,17 +113,17 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
-  handlePicture1Change(event) {
-    this.setState({ picture1: event.target.value });
+  handlePic1Change(event) {
+    this.setState({ pic1: event.target.files[0] });
     console.log(this.state);
   }
-  handlePicture2Change(event) {
-    this.setState({ picture2: event.target.value });
+  handlePic2Change(event) {
+    this.setState({ pic2: event.target.files[0] });
     console.log(this.state);
   }
 
-  handlePicture3Change(event) {
-    this.setState({ picture3: event.target.value });
+  handlePic3Change(event) {
+    this.setState({ pic3: event.target.files[0] });
     console.log(this.state);
   }
 
@@ -132,7 +141,9 @@ class NoticeFormPage extends Component {
       .then(response => {
         console.log(response);
         maxId = parseInt(response.DATA[0].max ? response.DATA[0].max : "0") + 1;
-        console.log(maxId);
+        this.uploadImage(1, this.state.pic1);
+        this.uploadImage(2, this.state.pic2);
+        this.uploadImage(3, this.state.pic3);
         return maxId;
       })
       .then(maxId => {
@@ -150,20 +161,21 @@ class NoticeFormPage extends Component {
               String.prototype.toLowerCase.apply(this.state.colour) +
               " " +
               String.prototype.toLowerCase.apply(this.state.tags),
-              pic1: this.state.pic1,
-              pic2: this.state.pic2,
-              pic3: this.state.pic3
+            pic1: this.state.pic1,
+            pic2: this.state.pic2,
+            pic3: this.state.pic3
           })
         });
+
         this.setState({
           title: "",
           community: "",
           description: "",
           species: "",
           colour: "",
-          picture1: "",
-          picture2: "",
-          picture3: "",
+          pic3: "",
+          pic2: "",
+          pic1: "",
           tags: "",
           visible: true
         });
@@ -258,24 +270,24 @@ class NoticeFormPage extends Component {
                 <Input
                   type="file"
                   name="pic1"
-                  className="input-image"
-                  onChange={this.uploadImage("pic3").bind(this)}
+                  className="fileInput"
+                  onChange={this.handlePic1Change}
                   style={{ marginBottom: "5px" }}
                 />
 
                 <Input
                   type="file"
-                  name="pic1"
-                  className="input-image"
-                  onChange={this.uploadImage("pic2").bind(this)}
+                  name="pic2"
+                  className="fileInput"
+                  onChange={this.handlePic2Change}
                   style={{ marginBottom: "5px" }}
                 />
 
                 <Input
                   type="file"
                   name="pic3"
-                  className="input-image"
-                  onChange={this.uploadImage("pic3")).bind(this)}
+                  className="fileInput"
+                  onChange={this.handlePic3Change}
                   style={{ marginBottom: "5px" }}
                 />
               </Col>
@@ -288,6 +300,7 @@ class NoticeFormPage extends Component {
                 <Input
                   type="text"
                   name="tags"
+                  value={this.state.tags}
                   style={{ marginBottom: "5px" }}
                   onChange={this.handleTagsChange}
                 />
