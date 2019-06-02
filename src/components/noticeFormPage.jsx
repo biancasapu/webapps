@@ -139,8 +139,12 @@ class NoticeFormPage extends Component {
         return response.json();
       })
       .then(response => {
+        console.log("response about maxid from backend");
         console.log(response);
-        maxId = parseInt(response.DATA[0].max ? response.DATA[0].max : "0") + 1;
+        var curMax = response.DATA[0].id;
+        console.log("current max is" + curMax);
+        maxId = parseInt(curMax ? curMax : "0") + 1;
+        console.log("new maxid is " + maxId);
         this.uploadImage(1, this.state.pic1);
         this.uploadImage(2, this.state.pic2);
         this.uploadImage(3, this.state.pic3);
