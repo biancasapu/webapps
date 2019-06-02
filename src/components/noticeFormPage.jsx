@@ -29,6 +29,7 @@ class NoticeFormPage extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleCommunityChange = this.handleCommunityChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handlePostCodeChange = this.handlePostCodeChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleColourChange = this.handleColourChange.bind(this);
     this.handlePic1Change = this.handlePic1Change.bind(this);
@@ -103,6 +104,10 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
+  handlePostCodeChange(event) {
+    this.setState({ postcode: event.target.value });
+    console.log(this.state);
+  }
   handleSpeciesChange(event) {
     this.setState({ species: event.target.value });
     console.log(this.state);
@@ -159,6 +164,7 @@ class NoticeFormPage extends Component {
             title: this.state.title,
             community: this.state.community,
             description: this.state.description,
+            postcode: this.state.postcode,
             tags:
               String.prototype.toLowerCase.apply(this.state.species) +
               " " +
@@ -175,6 +181,7 @@ class NoticeFormPage extends Component {
           title: "",
           community: "",
           description: "",
+          postcode: "",
           species: "",
           colour: "",
           pic3: "",
@@ -233,6 +240,16 @@ class NoticeFormPage extends Component {
                   name="description"
                   value={this.state.description}
                   onChange={this.handleDescriptionChange}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label sm={2}> Post Code </Label>
+              <Col sm={10}>
+                <Input
+                  name="postcode"
+                  value={this.state.postcode}
+                  onChange={this.handlePostCodeChange}
                 />
               </Col>
             </FormGroup>
