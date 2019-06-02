@@ -22,6 +22,7 @@ class LostFoundPage extends Component {
               title={notice.title}
               community={notice.community}
               description={notice.description}
+              postcode={notice.postcode}
               tags={notice.tags}
               pic1={notice.pic1}
               pic2={notice.pic2}
