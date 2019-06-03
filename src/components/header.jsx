@@ -2,27 +2,36 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NoticeFormPage from "./noticeFormPage";
 import LostFoundPage from "./lostFoundPage";
-import { Navbar, NavbarBrand, Nav } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, Row, Col, Container } from "reactstrap";
 
 class Header extends Component {
   render() {
     return (
       <Router>
         <Navbar color="dark" dark style={{ fontFamily: "Georgia, serif" }}>
-          <NavbarBrand className="logo" style={{ color: "white" }}>
-            Petabase
-          </NavbarBrand>
-          <Link style={{ color: "white" }} class="nav-link" to="/">
-            Submit Notice <span class="sr-only">(current)</span>
-          </Link>
-          <Link
-            style={{ color: "white" }}
-            class="nav-link"
-            to="/Lost-and-Found"
-          >
-            Lost & Found
-          </Link>
-
+          <Container>
+            <Row>
+              <Col xs="12" md="auto" style={{ textAlign: "center" }}>
+                <NavbarBrand className="logo" style={{ color: "white" }}>
+                  Petabase
+                </NavbarBrand>
+              </Col>
+              <Col xs="auto">
+                <Link style={{ color: "white" }} class="nav-link" to="/">
+                  Submit Notice <span class="sr-only">(current)</span>
+                </Link>
+              </Col>
+              <Col xs="auto">
+                <Link
+                  style={{ color: "white" }}
+                  class="nav-link"
+                  to="/Lost-and-Found"
+                >
+                  Lost & Found
+                </Link>
+              </Col>
+            </Row>
+          </Container>
           <Nav className="ml-auto" navbar />
         </Navbar>
 
