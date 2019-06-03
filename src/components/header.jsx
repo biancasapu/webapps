@@ -16,12 +16,12 @@ class Header extends Component {
                   Petabase
                 </NavbarBrand>
               </Col>
-              <Col xs="auto">
+              <Col xs="6" md="auto">
                 <Link style={{ color: "white" }} class="nav-link" to="/">
                   Submit Notice <span class="sr-only">(current)</span>
                 </Link>
               </Col>
-              <Col xs="auto">
+              <Col xs="6" md="auto">
                 <Link
                   style={{ color: "white" }}
                   class="nav-link"
