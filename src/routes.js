@@ -1,20 +1,19 @@
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NoticeFormPage from "./components/noticeFormPage";
 
-// export default (routes = [
-//   {
-//     path: "/",
-//     exact: true,
-//     sidebar: () => <div> home! </div>,
-//     main: () => <h2> Home </h2>
-//   },
-//   //   {
-//   //     path: "/dashboard",
-//   //     sidebar: () => <div> bubblegum! </div>,
-//   //     main: () => <DashboardPage/>
-//   //   },
-//   {
-//     path: "/Lost-and-Found",
-//     sidebar: () => <div> shoelaces! </div>,
-//     main: () => <LostFoundPage />
-//   }
-// ]);
+export default (routes = [
+  {
+    path: "/",
+    main: () => <NoticeFormPage />
+  },
+  //   {
+  //     path: "/dashboard",
+  //     sidebar: () => <div> bubblegum! </div>,
+  //     main: () => <DashboardPage/>
+  //   },
+  {
+    path: "/Lost-and-Found",
+    // sidebar: () => <div> shoelaces! </div>,
+    main: () => <LostFoundPage />
+  }
+]);

@@ -9,7 +9,6 @@ import {
   Col,
   Alert
 } from "reactstrap";
-//import Header from "./header";
 class NoticeFormPage extends Component {
   constructor(props) {
     super(props);
@@ -194,7 +193,11 @@ class NoticeFormPage extends Component {
               " " +
               String.prototype.toLowerCase.apply(this.state.colour) +
               " " +
-              String.prototype.toLowerCase.apply(this.state.tags),
+              String.prototype.toLowerCase.apply(this.state.tags) +
+              " " +
+              String.prototype.toLowerCase.apply(this.state.gender) +
+              " " +
+              String.prototype.toLowerCase.apply(this.state.neutered),
             pic1: this.state.pic1,
             pic2: this.state.pic2,
             pic3: this.state.pic3
@@ -229,8 +232,8 @@ class NoticeFormPage extends Component {
 
   render() {
     return (
-      <div>
-        <Container style={{ marginTop: "20px" }}>
+      <div style={{ background: "#e6e6ca" }}>
+        <Container style={{ paddingTop: "20px" }}>
           <Form>
             <FormGroup row>
               <Label sm={2}> Title of Notice </Label>
@@ -334,6 +337,7 @@ class NoticeFormPage extends Component {
                   <option>White</option>
                   <option>Orange</option>
                   <option>Brown</option>
+                  <option>Grey</option>
                 </Input>
               </Col>
             </FormGroup>
@@ -347,8 +351,8 @@ class NoticeFormPage extends Component {
                   onChange={this.handleGenderChange}
                 >
                   <option />
-                  <option>M</option>
-                  <option>F</option>
+                  <option>Male</option>
+                  <option>Female</option>
                 </Input>
               </Col>
               <Label sm={2}> Neutered </Label>
@@ -359,9 +363,9 @@ class NoticeFormPage extends Component {
                   value={this.state.neutered}
                   onChange={this.handleNeuteredChange}
                 >
-                  <option />
-                  <option>Yes</option>
-                  <option>No</option>
+                  <option className="text-muted" />
+                  <option>Neutered</option>
+                  <option>Intact</option>
                 </Input>
               </Col>
             </FormGroup>

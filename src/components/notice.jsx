@@ -5,7 +5,7 @@ import {
   CardImg,
   CardText,
   CardBody,
-  CardTitle,
+  CardHeader,
   CardSubtitle,
   Button
 } from "reactstrap";
@@ -32,13 +32,16 @@ class Notice extends Component {
       community,
       pic1,
       pic2,
-      pic3
+      pic3,
+      contact,
+      lastSeen,
+      postcode
     } = this.props;
 
     return (
       <div key={id} style={{ marginBottom: "20px" }}>
-        <Card>
-          {/* {cardImg} */}
+        <Card style={{ fontFamily: "Georgia, serif" }}>
+          <CardHeader tag="h3">{title}</CardHeader>
           <Row className="mt-3 ml-2 mr-2">
             <Col sm="4">
               <CardImg
@@ -72,9 +75,11 @@ class Notice extends Component {
             </Col>
           </Row>
           <CardBody>
-            <CardTitle> {title}</CardTitle>
             <CardSubtitle>{community}</CardSubtitle>
+            <CardText> Postcode: {postcode} </CardText>
             <CardText>{description}</CardText>
+            <CardText> Last Seen: {lastSeen} </CardText>
+            <CardText>Contact Information: {contact} </CardText>
             <CardText className="text-muted">{tags}</CardText>
             <Button>Help!</Button>
           </CardBody>

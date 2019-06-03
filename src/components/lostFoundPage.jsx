@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Header from "./header";
 import Notice from "./notice";
 import { Container } from "reactstrap";
-import NoticeFormPage from "./noticeFormPage";
 
 class LostFoundPage extends Component {
   constructor(props) {
@@ -11,6 +9,8 @@ class LostFoundPage extends Component {
     this.state = {
       notices: []
     };
+
+    this.loadPage = this.loadPage.bind(this);
   }
 
   render() {
@@ -27,6 +27,8 @@ class LostFoundPage extends Component {
               pic1={notice.pic1}
               pic2={notice.pic2}
               pic3={notice.pic3}
+              contact={notice.contact}
+              lastSeen={notice.lastSeen}
             />
           </div>
         ))
@@ -35,22 +37,25 @@ class LostFoundPage extends Component {
 
     return (
       <div style={{ background: "#e6e6ca" }}>
-        <Header />
-        <NoticeFormPage />
         <div>{noticeArr}</div>
       </div>
     );
   }
 
+  loadPage() {
+    fetch("https://webapps05backend.herokuapp.com/notice/*")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        this.setState({ notices: response.DATA });
+      });
+  }
+
   componentDidMount() {
+    this.loadPage();
     setInterval(() => {
-      fetch("https://webapps05backend.herokuapp.com/notice/*")
-        .then(function(response) {
-          return response.json();
-        })
-        .then(response => {
-          this.setState({ notices: response.DATA });
-        });
+      this.loadPage();
     }, 5000);
   }
 }
