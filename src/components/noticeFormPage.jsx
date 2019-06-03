@@ -6,7 +6,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Col,
   Alert
 } from "reactstrap";
@@ -55,14 +54,13 @@ class NoticeFormPage extends Component {
     d.append("image", e);
 
     r.open("POST", "https://api.imgur.com/3/image", false);
-    r.setRequestHeader("Authorization", "Client-ID 3bfb02e2365a65e");
+    r.setRequestHeader("Authorization", "Client-ID c6782e7ec6ba599");
     r.onreadystatechange = () => {
       if (r.status === 200 && r.readyState === 4) {
         let res = JSON.parse(r.responseText);
         u = "https://i.imgur.com/" + res.data.id + ".png";
         if (picNo === 1) {
           this.setState({ pic1: u });
-          console.log(this.state.pic1);
         }
         if (picNo === 2) {
           this.setState({ pic2: u });
@@ -144,6 +142,25 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
+  handleContactChange(event) {
+    this.setState({ contact: event.target.value });
+    console.log(this.state);
+  }
+
+  handleGenderChange(event) {
+    this.setState({ gender: event.target.value });
+    console.log(this.state);
+  }
+  handleLastSeenChange(event) {
+    this.setState({ lastSeen: event.target.value });
+    console.log(this.state);
+  }
+
+  handleNeuteredChange(event) {
+    this.setState({ neutered: event.target.value });
+    console.log(this.state);
+  }
+
   handleSubmit() {
     var maxId;
     fetch("https://webapps05backend.herokuapp.com/notice/max/id")
@@ -153,9 +170,7 @@ class NoticeFormPage extends Component {
       .then(response => {
         console.log("response about maxid from backend");
         console.log(response);
-        var curMax = response.DATA[0].id;
-        console.log("current max is" + curMax);
-        maxId = parseInt(curMax ? curMax : "0") + 1;
+        maxId = parseInt(response.DATA[0] ? response.DATA[0].id : "0") + 1;
         console.log("new maxid is " + maxId);
         this.uploadImage(1, this.state.pic1);
         this.uploadImage(2, this.state.pic2);
@@ -172,6 +187,8 @@ class NoticeFormPage extends Component {
             community: this.state.community,
             description: this.state.description,
             postcode: this.state.postcode,
+            contact: this.state.contact,
+            lastSeen: this.state.lastSeen,
             tags:
               String.prototype.toLowerCase.apply(this.state.species) +
               " " +
@@ -191,6 +208,10 @@ class NoticeFormPage extends Component {
           postcode: "",
           species: "",
           colour: "",
+          contact: "",
+          gender: "",
+          neutered: "",
+          lastSeen: "",
           pic3: "",
           pic2: "",
           pic1: "",
@@ -212,9 +233,10 @@ class NoticeFormPage extends Component {
         <Container style={{ marginTop: "20px" }}>
           <Form>
             <FormGroup row>
-              <Label sm={2}> Title </Label>
+              <Label sm={2}> Title of Notice </Label>
               <Col sm={10}>
                 <Input
+                  placeholder="What is this notice called?"
                   name="title"
                   value={this.state.title}
                   onChange={this.handleTitleChange}
@@ -241,13 +263,11 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label sm={2}>
-                {" "}
-                Description of the animal (What name it responds to, any
-                defining physical features)
-              </Label>
+              <Label sm={2}> Description of the pet</Label>
+
               <Col sm={10}>
                 <Input
+                  placeholder="What name it responds to, any defining physical features etc."
                   name="description"
                   value={this.state.description}
                   onChange={this.handleDescriptionChange}
@@ -258,9 +278,30 @@ class NoticeFormPage extends Component {
               <Label sm={2}> Post Code </Label>
               <Col sm={10}>
                 <Input
+                  placeholder="Your postcode, e.g. NG8 2JN"
                   name="postcode"
                   value={this.state.postcode}
                   onChange={this.handlePostCodeChange}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label sm={2}> Last Seen </Label>
+              <Col sm={10}>
+                <Input
+                  placeholder="Date/ time you last saw your pet"
+                  value={this.state.lastSeen}
+                  onChange={this.handleLastSeenChange}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label sm={2}> Contact info </Label>
+              <Col sm={10}>
+                <Input
+                  placeholder="Contact details such as address/ phone number etc"
+                  value={this.state.contact}
+                  onChange={this.handleContactChange}
                 />
               </Col>
             </FormGroup>
@@ -293,6 +334,34 @@ class NoticeFormPage extends Component {
                   <option>White</option>
                   <option>Orange</option>
                   <option>Brown</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label sm={2}> Gender </Label>
+              <Col sm={4}>
+                <Input
+                  type="select"
+                  name="gender"
+                  value={this.state.gender}
+                  onChange={this.handleGenderChange}
+                >
+                  <option />
+                  <option>M</option>
+                  <option>F</option>
+                </Input>
+              </Col>
+              <Label sm={2}> Neutered </Label>
+              <Col sm={4}>
+                <Input
+                  type="select"
+                  name="neutered"
+                  value={this.state.neutered}
+                  onChange={this.handleNeuteredChange}
+                >
+                  <option />
+                  <option>Yes</option>
+                  <option>No</option>
                 </Input>
               </Col>
             </FormGroup>
@@ -330,15 +399,13 @@ class NoticeFormPage extends Component {
               </Label>
               <Col>
                 <Input
+                  placeholder="Enter your tags here (microchipped, breed etc...)"
                   type="text"
                   name="tags"
                   value={this.state.tags}
                   style={{ marginBottom: "5px" }}
                   onChange={this.handleTagsChange}
                 />
-                <FormText color="muted">
-                  Enter your tags, separated by a comma
-                </FormText>
               </Col>
             </FormGroup>
             <FormGroup>
