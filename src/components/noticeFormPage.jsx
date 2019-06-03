@@ -18,8 +18,12 @@ class NoticeFormPage extends Component {
       title: "",
       community: "",
       description: "",
+      lastSeen: "",
+      contact: "",
       species: "",
       colour: "",
+      gender: "",
+      neutered: "",
       pic1: "",
       pic2: "",
       pic3: "",
@@ -32,6 +36,10 @@ class NoticeFormPage extends Component {
     this.handlePostCodeChange = this.handlePostCodeChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleColourChange = this.handleColourChange.bind(this);
+    this.handleLastSeenChange = this.handleLastSeenChange.bind(this);
+    this.handleContactChange = this.handleContactChange.bind(this);
+    this.handleGenderChange = this.handleGenderChange.bind(this);
+    this.handleNeuteredChange = this.handleNeuteredChange.bind(this);
     this.handlePic1Change = this.handlePic1Change.bind(this);
     this.handlePic2Change = this.handlePic2Change.bind(this);
     this.handlePic3Change = this.handlePic3Change.bind(this);
@@ -39,7 +47,6 @@ class NoticeFormPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
   }
-
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
     const d = new FormData();
@@ -234,7 +241,11 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label sm={2}> Description </Label>
+              <Label sm={2}>
+                {" "}
+                Description of the animal (What name it responds to, any
+                defining physical features)
+              </Label>
               <Col sm={10}>
                 <Input
                   name="description"
