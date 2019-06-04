@@ -6,8 +6,7 @@ import {
   CardText,
   CardBody,
   CardHeader,
-  CardSubtitle,
-  Button
+  CardSubtitle
 } from "reactstrap";
 require("any-promise/register/q");
 
@@ -81,7 +80,7 @@ class Notice extends Component {
             <CardText> Last Seen: {lastSeen} </CardText>
             <CardText>Contact Information: {contact} </CardText>
             <CardText className="text-muted">{tags}</CardText>
-            <Button>Help!</Button>
+            {/* <Button>Help!</Button> */}
           </CardBody>
         </Card>
       </div>

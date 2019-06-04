@@ -68,25 +68,6 @@ class NoticeFormPage extends Component {
         if (picNo === 3) {
           this.setState({ pic3: u });
         }
-
-        // const d = document.createElement("div");
-        // d.className = "image";
-        // document.getElementsByTagName("body")[0].appendChild(d);
-
-        // const i = document.createElement("img");
-        // i.className = "image-src";
-        // i.src = u;
-        // document.getElementsByClassName("image")[0].appendChild(i);
-
-        // const a = document.createElement("a");
-        // a.className = "image-link";
-        // a.href = u;
-        // document.getElementsByClassName("image")[0].appendChild(a);
-
-        // const p = document.createElement("p");
-        // p.className = "image-url";
-        // p.innerHTML = u;
-        // document.getElementsByClassName("image-link")[0].appendChild(p);
       }
     };
 
@@ -169,7 +150,7 @@ class NoticeFormPage extends Component {
       .then(response => {
         console.log("response about maxid from backend");
         console.log(response);
-        maxId = parseInt(response.DATA[0] ? response.DATA[0].id : "0") + 1;
+        maxId = parseInt(response[0] ? response[0].id : "0") + 1;
         console.log("new maxid is " + maxId);
         this.uploadImage(1, this.state.pic1);
         this.uploadImage(2, this.state.pic2);

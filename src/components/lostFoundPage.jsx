@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Notice from "./notice";
-import { Container } from "reactstrap";
+import { Container, Button, Form, FormGroup, Input, Col } from "reactstrap";
 
 class LostFoundPage extends Component {
   constructor(props) {
@@ -11,9 +11,37 @@ class LostFoundPage extends Component {
     };
 
     this.loadPage = this.loadPage.bind(this);
+    //this.handleSearch = this.handleSearch.bind(this);
   }
 
+  handleSearch() {}
+
   render() {
+    const searchBar = (
+      <Container style={{ paddingTop: "20px", fontFamily: "Georgia, serif" }}>
+        <Form>
+          <FormGroup row>
+            {/* <Col xs={3} md={2}>
+              <Label> Search notice </Label>
+            </Col> */}
+            <Col xs={9} md={10}>
+              <Input
+                placeholder="Enter your tags here. (e.g. species, community, colour etc.)"
+                name="search"
+                value={this.state.title}
+                onChange={this.handleTitleChange}
+              />
+            </Col>
+            <Col />
+            <FormGroup xs={12} md={2}>
+              <Button onClick={this.handleSeacrh}>Search</Button>
+            </FormGroup>
+            <Col />
+          </FormGroup>
+        </Form>
+      </Container>
+    );
+
     const not = this.state
       ? this.state.notices.map(notice => (
           <div>
@@ -28,7 +56,7 @@ class LostFoundPage extends Component {
               pic2={notice.pic2}
               pic3={notice.pic3}
               contact={notice.contact}
-              lastSeen={notice.lastSeen}
+              lastSeen={notice.lastseen}
             />
           </div>
         ))
@@ -37,6 +65,7 @@ class LostFoundPage extends Component {
 
     return (
       <div style={{ background: "#e6e6ca" }}>
+        <div>{searchBar}</div>
         <div>{noticeArr}</div>
       </div>
     );
@@ -48,7 +77,7 @@ class LostFoundPage extends Component {
         return response.json();
       })
       .then(response => {
-        this.setState({ notices: response.DATA });
+        this.setState({ notices: response });
       });
   }
 
