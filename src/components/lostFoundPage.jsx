@@ -3,6 +3,7 @@ import Notice from "./notice";
 import { Container, Button, Form, FormGroup, Input, Col } from "reactstrap";
 
 class LostFoundPage extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
 
@@ -108,7 +109,12 @@ class LostFoundPage extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.loadPage();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 }
 

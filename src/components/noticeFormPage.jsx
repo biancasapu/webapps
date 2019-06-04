@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Button,
@@ -394,7 +395,15 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup>
-              <Button onClick={this.handleSubmit}> Submit </Button>
+              <Button onClick={this.handleSubmit}>
+                <Link
+                  style={{ color: "white" }}
+                  class="nav-link"
+                  to="/Lost-and-Found"
+                >
+                  Submit
+                </Link>
+              </Button>
             </FormGroup>
           </Form>
           <Alert
