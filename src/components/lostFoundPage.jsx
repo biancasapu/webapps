@@ -7,14 +7,40 @@ class LostFoundPage extends Component {
     super(props);
 
     this.state = {
-      notices: []
+      notices: [],
+      ids: [],
+      search: ""
     };
 
     this.loadPage = this.loadPage.bind(this);
-    //this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
-  handleSearch() {}
+  handleSearchChange(event) {
+    this.setState({ search: event.target.value });
+    console.log(this.state);
+  }
+
+  handleSearch() {
+    var tagsUri = "http://webapps05backend.herokuapp.com/search/";
+    const tags = this.state.search.split(" ");
+    this.setState({ notices: [], ids: [] });
+    console.log(tags);
+    for (var i = 0; i < tags.length - 1; i++) {
+      tagsUri = tagsUri + tags[i] + "%20";
+    }
+    tagsUri = tagsUri + tags[tags.length - 1];
+    fetch(tagsUri)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        this.setState({
+          notices: this.state.notices.concat(response)
+        });
+      });
+  }
 
   render() {
     const searchBar = (
@@ -26,15 +52,15 @@ class LostFoundPage extends Component {
             </Col> */}
             <Col xs={9} md={10}>
               <Input
-                placeholder="Enter your tags here. (e.g. species, community, colour etc.)"
+                placeholder="Enter your tags here. (e.g. species community colour etc.)"
                 name="search"
-                value={this.state.title}
-                onChange={this.handleTitleChange}
+                value={this.state.search}
+                onChange={this.handleSearchChange}
               />
             </Col>
             <Col />
             <FormGroup xs={12} md={2}>
-              <Button onClick={this.handleSeacrh}>Search</Button>
+              <Button onClick={this.handleSearch}>Search</Button>
             </FormGroup>
             <Col />
           </FormGroup>
@@ -72,7 +98,7 @@ class LostFoundPage extends Component {
   }
 
   loadPage() {
-    fetch("https://webapps05backend.herokuapp.com/notice/*")
+    fetch("http://webapps05backend.herokuapp.com/notice/*")
       .then(function(response) {
         return response.json();
       })
@@ -83,9 +109,6 @@ class LostFoundPage extends Component {
 
   componentDidMount() {
     this.loadPage();
-    setInterval(() => {
-      this.loadPage();
-    }, 5000);
   }
 }
 
