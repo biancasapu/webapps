@@ -2,6 +2,7 @@ import React from "react";
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
 
+var tstore = [];
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,7 @@ class GoogleMapsContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {}
+
       // stores: [
       //   { lat: 47.49855629475769, lng: -122.14184416996333 },
       //   { latitude: 47.359423, longitude: -122.021071 },
@@ -18,6 +20,8 @@ class GoogleMapsContainer extends React.Component {
       //   { latitude: 47.5524695, longitude: -122.0425407 }
       // ]
     };
+
+    this.loadPage = this.loadPage.bind(this);
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
@@ -52,6 +56,7 @@ class GoogleMapsContainer extends React.Component {
       });
     }
   };
+
   onMapClick = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -60,6 +65,27 @@ class GoogleMapsContainer extends React.Component {
       });
     }
   };
+
+  loadPage() {
+    fetch("https://webapps05backend.herokuapp.com/map").then(response => {
+      for (var i = 0; i < response.length; ++i) {
+        {
+          tstore.push({
+            latitude: response[i].latitude,
+            longitude: response[i].longitude
+          });
+        }
+      }
+    });
+  }
+
+  componentDidMount() {
+    this.loadPage();
+    setInterval(() => {
+      this.loadPage();
+    }, 5000);
+  }
+
   render() {
     const style = {
       width: "100vw",
@@ -77,24 +103,22 @@ class GoogleMapsContainer extends React.Component {
         zoom={14}
         initialCenter={{ lat: 39.648209, lng: -75.711185 }}
       >
-        <CurrentLocation
-          centerAroundCurrentLocation
-          google={this.props.google}
-        />
-        {/* {this.displayMarkers()} */}
-        <Marker
+        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+          {/* {this.displayMarkers()} */}
+          {/* <Marker
           onClick={this.onMarkerClick}
           name={"Kenyatta International Convention Centre"}
-        />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
+        /> */}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+        </CurrentLocation>
       </Map>
     );
   }
