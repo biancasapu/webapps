@@ -47,7 +47,10 @@ class GoogleMapsContainer extends React.Component {
 
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
-      console.log(store);
+      //console.log(store);
+      console.log(store.pic1);
+      console.log(store.pic2);
+      console.log(store.pic3);
       return (
         <Marker
           key={index}
@@ -57,7 +60,7 @@ class GoogleMapsContainer extends React.Component {
             lng: store.longitude
           }}
           onClick={this.onMarkerClick}
-          abcd={
+          picList={
             <Row className="mt-3 ml-2 mr-2">
               <Col sm="4">
                 <CardImg
@@ -66,7 +69,7 @@ class GoogleMapsContainer extends React.Component {
                     borderRadius: "10%",
                     marginBottom: "20px"
                   }}
-                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                  src={store.pic1}
                 />
               </Col>
               <Col sm="4">
@@ -76,7 +79,7 @@ class GoogleMapsContainer extends React.Component {
                     borderRadius: "10%",
                     marginBottom: "20px"
                   }}
-                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                  src={store.pic2}
                 />
               </Col>
               <Col sm="4">
@@ -86,7 +89,7 @@ class GoogleMapsContainer extends React.Component {
                     borderRadius: "10%",
                     marginBottom: "20px"
                   }}
-                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                  src={store.pic3}
                 />
               </Col>
             </Row>
@@ -94,15 +97,6 @@ class GoogleMapsContainer extends React.Component {
           name={store.id}
           //onClick={() => console.log("You clicked me!")}
         />
-        // <InfoWindow
-        //   marker={this.state.activeMarker}
-        //   visible={this.state.showingInfoWindow}
-        //   onClose={this.onClose}
-        // >
-        //   <div>
-        //     <h4>{this.state.selectedPlace.name}</h4>
-        //   </div>
-        // </InfoWindow>
       );
     });
   };
@@ -157,7 +151,7 @@ class GoogleMapsContainer extends React.Component {
             onClose={this.onClose}
           >
             <div>
-              <h4>{this.state.selectedPlace.abcd}</h4>
+              <h4>{this.state.selectedPlace.picList}</h4>
             </div>
           </InfoWindow>
 
