@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NoticeFormPage from "./noticeFormPage";
 import LostFoundPage from "./lostFoundPage";
 import { Navbar, NavbarBrand, Nav, Row, Col, Container } from "reactstrap";
+import GoogleApiWrapper from "./mapsAPI";
 
 class Header extends Component {
   render() {
@@ -16,18 +17,23 @@ class Header extends Component {
                   Petabase
                 </NavbarBrand>
               </Col>
-              <Col xs="6" md="auto">
+              <Col xs="4" md="auto">
                 <Link style={{ color: "white" }} class="nav-link" to="/">
                   Submit Notice <span class="sr-only">(current)</span>
                 </Link>
               </Col>
-              <Col xs="6" md="auto">
+              <Col xs="4" md="auto">
                 <Link
                   style={{ color: "white" }}
                   class="nav-link"
                   to="/Lost-and-Found"
                 >
                   Lost & Found
+                </Link>
+              </Col>
+              <Col xs="4" md="auto">
+                <Link style={{ color: "white" }} class="nav-link" to="/Map">
+                  Map
                 </Link>
               </Col>
             </Row>
@@ -37,6 +43,7 @@ class Header extends Component {
 
         <Route exact path="/" component={NoticeFormPage} />
         <Route path="/Lost-and-Found" component={LostFoundPage} />
+        <Route path="/Map" component={GoogleApiWrapper} />
       </Router>
     );
   }
