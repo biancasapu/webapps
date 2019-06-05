@@ -1,7 +1,15 @@
-import React from "react";
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
-
+import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardHeader,
+  CardSubtitle
+} from "reactstrap";
 var tstore = [];
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
@@ -11,11 +19,6 @@ class GoogleMapsContainer extends React.Component {
       activeMarker: {},
       selectedPlace: {},
       stores: []
-
-      // stores: [
-      //   { latitude: 52.951069, longitude: -1.244046 },
-      //   { latitude: 51.493743, longitude: -0.218652 }
-      // ]
     };
 
     this.loadPage = this.loadPage.bind(this);
@@ -33,17 +36,6 @@ class GoogleMapsContainer extends React.Component {
         this.setState({ stores: response });
         //console.log(response);
       });
-
-    // for (var i = 0; i < response.length; ++i) {
-    //   {
-    //     tstore.push({
-    //       latitude: response[i].latitude,
-    //       longitude: response[i].longitude
-    //     });
-    //   }
-    // }
-    //this.setState({ stores: response });
-    // console.log(response.json);
   }
 
   componentDidMount() {
@@ -55,6 +47,7 @@ class GoogleMapsContainer extends React.Component {
 
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
+      console.log(store);
       return (
         <Marker
           key={index}
@@ -63,11 +56,57 @@ class GoogleMapsContainer extends React.Component {
             lat: store.latitude,
             lng: store.longitude
           }}
-          onClick={() => console.log("You clicked me!")}
+          onClick={this.onMarkerClick}
+          abcd={
+            <Row className="mt-3 ml-2 mr-2">
+              <Col sm="4">
+                <CardImg
+                  style={{
+                    width: "100%",
+                    borderRadius: "10%",
+                    marginBottom: "20px"
+                  }}
+                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                />
+              </Col>
+              <Col sm="4">
+                <CardImg
+                  style={{
+                    width: "100%",
+                    borderRadius: "10%",
+                    marginBottom: "20px"
+                  }}
+                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                />
+              </Col>
+              <Col sm="4">
+                <CardImg
+                  style={{
+                    width: "100%",
+                    borderRadius: "10%",
+                    marginBottom: "20px"
+                  }}
+                  src={"https://i.imgur.com/nyxq4bu.jpg"}
+                />
+              </Col>
+            </Row>
+          }
+          name={store.id}
+          //onClick={() => console.log("You clicked me!")}
         />
+        // <InfoWindow
+        //   marker={this.state.activeMarker}
+        //   visible={this.state.showingInfoWindow}
+        //   onClose={this.onClose}
+        // >
+        //   <div>
+        //     <h4>{this.state.selectedPlace.name}</h4>
+        //   </div>
+        // </InfoWindow>
       );
     });
   };
+
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
@@ -108,23 +147,21 @@ class GoogleMapsContainer extends React.Component {
         google={this.props.google}
         onClick={this.onMapClick}
         zoom={14}
-        initialCenter={{ lat: 39.648209, lng: -75.711185 }}
+        initialCenter={{ lat: 51.4997265, lng: -0.18323 }}
       >
         <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
           {this.displayMarkers()}
-          {/* <Marker
-          onClick={this.onMarkerClick}
-          name={"Kenyatta International Convention Centre"}
-        /> */}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             onClose={this.onClose}
           >
             <div>
-              <h4>{this.state.selectedPlace.name}</h4>
+              <h4>{this.state.selectedPlace.abcd}</h4>
             </div>
           </InfoWindow>
+
+          {/*  */}
         </CurrentLocation>
       </Map>
     );
