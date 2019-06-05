@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardSubtitle
 } from "reactstrap";
+import CardPictureList from "./cardPictureList";
+
 require("any-promise/register/q");
 
 class Notice extends Component {
@@ -41,38 +43,7 @@ class Notice extends Component {
       <div key={id} style={{ marginBottom: "20px" }}>
         <Card style={{ fontFamily: "Georgia, serif" }}>
           <CardHeader tag="h3">{title}</CardHeader>
-          <Row className="mt-3 ml-2 mr-2">
-            <Col sm="4">
-              <CardImg
-                style={{
-                  width: "100%",
-                  borderRadius: "10%",
-                  marginBottom: "20px"
-                }}
-                src={pic1}
-              />
-            </Col>
-            <Col sm="4">
-              <CardImg
-                style={{
-                  width: "100%",
-                  borderRadius: "10%",
-                  marginBottom: "20px"
-                }}
-                src={pic2}
-              />
-            </Col>
-            <Col sm="4">
-              <CardImg
-                style={{
-                  width: "100%",
-                  borderRadius: "10%",
-                  marginBottom: "20px"
-                }}
-                src={pic3 ? pic3 : null}
-              />
-            </Col>
-          </Row>
+          <CardPictureList pic1={pic1} pic2={pic2} pic3={pic3} />
           <CardBody>
             <CardSubtitle>{community}</CardSubtitle>
             <CardText> Postcode: {postcode} </CardText>
