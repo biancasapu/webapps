@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {
   Container,
   Button,
@@ -8,7 +8,8 @@ import {
   Label,
   Input,
   Col,
-  Alert
+  Alert,
+  Row
 } from "reactstrap";
 class NoticeFormPage extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class NoticeFormPage extends Component {
       pic2: "",
       pic3: "",
       tags: "",
+      found: "",
       visible: false
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -45,6 +47,7 @@ class NoticeFormPage extends Component {
     this.handleTagsChange = this.handleTagsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
   }
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
@@ -142,6 +145,11 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
+  handleRadioChange(event) {
+    this.setState({ found: event.target.value });
+    console.log(this.state);
+  }
+
   handleSubmit() {
     var maxId;
     fetch("http://webapps05backend.herokuapp.com/notice/max/id")
@@ -179,7 +187,9 @@ class NoticeFormPage extends Component {
               " " +
               String.prototype.toLowerCase.apply(this.state.gender) +
               " " +
-              String.prototype.toLowerCase.apply(this.state.neutered),
+              String.prototype.toLowerCase.apply(this.state.neutered) +
+              " " +
+              String.prototype.toLocaleLowerCase.apply(this.state.lost),
             pic1: this.state.pic1,
             pic2: this.state.pic2,
             pic3: this.state.pic3
@@ -201,7 +211,8 @@ class NoticeFormPage extends Component {
           pic2: "",
           pic1: "",
           tags: "",
-          visible: true
+          visible: true,
+          found: ""
         });
 
         setTimeout(() => {
@@ -247,6 +258,37 @@ class NoticeFormPage extends Component {
                 </Input>
               </Col>
             </FormGroup>
+            <Container style={{ paddingBottom: "15px" }}>
+              <Row>
+                <Label sm={2} style={{ paddingLeft: "0px" }} />
+                <Col sm={5}>
+                  <FormGroup check>
+                    <Label check>
+                      <Input
+                        type="radio"
+                        value="lost"
+                        checked={this.state.found === "lost"}
+                        onChange={this.handleRadioChange}
+                      />
+                      Lost
+                    </Label>
+                  </FormGroup>
+                </Col>
+                <Col sm={5}>
+                  <FormGroup check disabled>
+                    <Label check>
+                      <Input
+                        type="radio"
+                        value="found"
+                        checked={this.state.found === "found"}
+                        onChange={this.handleRadioChange}
+                      />
+                      Found
+                    </Label>
+                  </FormGroup>
+                </Col>
+              </Row>
+            </Container>
             <FormGroup row>
               <Label sm={2}> Description of the pet</Label>
 
