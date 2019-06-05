@@ -135,8 +135,8 @@ CurrentLocation.defaultProps = {
 
   // this is the initial center before the user's browser is pinged for location, TODO: change later
   initialCenter: {
-    lat: 0.0,
-    lng: 0.0
+    lat: 51.4997265,
+    lng: -0.18323
   },
 
   centerAroundCurrentLocation: false,
