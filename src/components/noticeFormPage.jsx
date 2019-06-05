@@ -395,15 +395,7 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup>
-              <Button onClick={this.handleSubmit}>
-                <Link
-                  style={{ color: "white" }}
-                  class="nav-link"
-                  to="/Lost-and-Found"
-                >
-                  Submit
-                </Link>
-              </Button>
+              <Button onClick={this.handleSubmit}>Submit</Button>
             </FormGroup>
           </Form>
           <Alert
