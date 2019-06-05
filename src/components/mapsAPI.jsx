@@ -9,15 +9,12 @@ class GoogleMapsContainer extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      stores: []
 
       // stores: [
-      //   { lat: 47.49855629475769, lng: -122.14184416996333 },
-      //   { latitude: 47.359423, longitude: -122.021071 },
-      //   { latitude: 47.2052192687988, longitude: -121.988426208496 },
-      //   { latitude: 47.6307081, longitude: -122.1434325 },
-      //   { latitude: 47.3084488, longitude: -122.2140121 },
-      //   { latitude: 47.5524695, longitude: -122.0425407 }
+      //   { latitude: 52.951069, longitude: -1.244046 },
+      //   { latitude: 51.493743, longitude: -0.218652 }
       // ]
     };
 
@@ -26,21 +23,51 @@ class GoogleMapsContainer extends React.Component {
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
   }
-  // displayMarkers = () => {
-  //   return this.state.stores.map((store, index) => {
-  //     return (
-  //       <Marker
-  //         key={index}
-  //         id={index}
-  //         position={{
-  //           lat: store.latitude,
-  //           lng: store.longitude
-  //         }}
-  //         onClick={() => console.log("You clicked me!")}
-  //       />
-  //     );
-  //   });
-  // };
+
+  loadPage() {
+    fetch("https://webapps05backend.herokuapp.com/map")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        this.setState({ stores: response });
+        //console.log(response);
+      });
+
+    // for (var i = 0; i < response.length; ++i) {
+    //   {
+    //     tstore.push({
+    //       latitude: response[i].latitude,
+    //       longitude: response[i].longitude
+    //     });
+    //   }
+    // }
+    //this.setState({ stores: response });
+    // console.log(response.json);
+  }
+
+  componentDidMount() {
+    this.loadPage();
+    setInterval(() => {
+      this.loadPage();
+    }, 5000);
+  }
+
+  displayMarkers = () => {
+    return this.state.stores.map((store, index) => {
+      return (
+        <Marker
+          key={index}
+          id={index}
+          position={{
+            lat: store.latitude,
+            lng: store.longitude
+          }}
+          onClick={() => console.log("You clicked me!")}
+        />
+      );
+    });
+  };
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
@@ -66,30 +93,10 @@ class GoogleMapsContainer extends React.Component {
     }
   };
 
-  loadPage() {
-    fetch("https://webapps05backend.herokuapp.com/map").then(response => {
-      for (var i = 0; i < response.length; ++i) {
-        {
-          tstore.push({
-            latitude: response[i].latitude,
-            longitude: response[i].longitude
-          });
-        }
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.loadPage();
-    setInterval(() => {
-      this.loadPage();
-    }, 5000);
-  }
-
   render() {
     const style = {
-      width: "100vw",
-      height: "100vh",
+      width: "90vw",
+      height: "90vh",
       marginLeft: "auto",
       marginRight: "auto"
     };
@@ -104,7 +111,7 @@ class GoogleMapsContainer extends React.Component {
         initialCenter={{ lat: 39.648209, lng: -75.711185 }}
       >
         <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-          {/* {this.displayMarkers()} */}
+          {this.displayMarkers()}
           {/* <Marker
           onClick={this.onMarkerClick}
           name={"Kenyatta International Convention Centre"}
