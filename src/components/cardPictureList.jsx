@@ -9,7 +9,7 @@ import {
   CardSubtitle
 } from "reactstrap";
 
-class PictureList extends Component {
+class CardPictureList extends Component {
   constructor(props) {
     super(props);
     //console.log(props);
@@ -58,4 +58,4 @@ class PictureList extends Component {
   }
 }
 
-export default PictureList;
+export default CardPictureList;
