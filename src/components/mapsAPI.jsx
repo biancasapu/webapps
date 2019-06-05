@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardSubtitle
 } from "reactstrap";
-import PictureList from "./pictureList";
+import CardPictureList from "./cardPictureList";
 
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class GoogleMapsContainer extends React.Component {
           }}
           onClick={this.onMarkerClick}
           picList={
-            <PictureList
+            <CardPictureList
               pic1={store.pic1}
               pic2={store.pic2}
               pic3={store.pic3}
