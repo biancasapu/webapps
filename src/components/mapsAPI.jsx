@@ -10,7 +10,8 @@ import {
   CardHeader,
   CardSubtitle
 } from "reactstrap";
-var tstore = [];
+import PictureList from "./pictureList";
+
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -48,9 +49,9 @@ class GoogleMapsContainer extends React.Component {
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
       //console.log(store);
-      console.log(store.pic1);
-      console.log(store.pic2);
-      console.log(store.pic3);
+      // console.log(store.pic1);
+      // console.log(store.pic2);
+      // console.log(store.pic3);
       return (
         <Marker
           key={index}
@@ -61,38 +62,11 @@ class GoogleMapsContainer extends React.Component {
           }}
           onClick={this.onMarkerClick}
           picList={
-            <Row className="mt-3 ml-2 mr-2">
-              <Col sm="4">
-                <CardImg
-                  style={{
-                    width: "100%",
-                    borderRadius: "10%",
-                    marginBottom: "20px"
-                  }}
-                  src={store.pic1}
-                />
-              </Col>
-              <Col sm="4">
-                <CardImg
-                  style={{
-                    width: "100%",
-                    borderRadius: "10%",
-                    marginBottom: "20px"
-                  }}
-                  src={store.pic2}
-                />
-              </Col>
-              <Col sm="4">
-                <CardImg
-                  style={{
-                    width: "100%",
-                    borderRadius: "10%",
-                    marginBottom: "20px"
-                  }}
-                  src={store.pic3}
-                />
-              </Col>
-            </Row>
+            <PictureList
+              pic1={store.pic1}
+              pic2={store.pic2}
+              pic3={store.pic3}
+            />
           }
           name={store.id}
           //onClick={() => console.log("You clicked me!")}
