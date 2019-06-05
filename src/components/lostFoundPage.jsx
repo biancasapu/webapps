@@ -51,7 +51,7 @@ class LostFoundPage extends Component {
             {/* <Col xs={3} md={2}>
               <Label> Search notice </Label>
             </Col> */}
-            <Col xs={9} md={10}>
+            <Col>
               <Input
                 placeholder="Enter your tags here. (e.g. species community colour etc.)"
                 name="search"
@@ -59,11 +59,9 @@ class LostFoundPage extends Component {
                 onChange={this.handleSearchChange}
               />
             </Col>
-            <Col />
-            <FormGroup xs={12} md={2}>
+            <FormGroup xs={12} md={2} style={{ paddingRight: "20px" }}>
               <Button onClick={this.handleSearch}>Search</Button>
             </FormGroup>
-            <Col />
           </FormGroup>
         </Form>
       </Container>
