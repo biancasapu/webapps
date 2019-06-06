@@ -49,7 +49,7 @@ class GoogleMapsContainer extends React.Component {
             lng: store.longitude
           }}
           onClick={this.onMarkerClick}
-          picList={
+          markerInfoWindow={
             <div>
               <h5>{store.title}</h5>
               <CardPictureList
@@ -118,8 +118,7 @@ class GoogleMapsContainer extends React.Component {
             onClose={this.onClose}
           >
             <div>
-              {/* <h5>"Title text"</h5> */}
-              <h2>{this.state.selectedPlace.picList}</h2>
+              <h2>{this.state.selectedPlace.markerInfoWindow}</h2>
             </div>
           </InfoWindow>
 
