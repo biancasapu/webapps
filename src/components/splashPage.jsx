@@ -35,7 +35,7 @@ class SplashPage extends Component {
                   fontSize: "25px"
                 }}
               >
-                Reuniting pet owners.
+                Reuniting pets and their owners.
               </CardText>
               <CardText
                 style={{
