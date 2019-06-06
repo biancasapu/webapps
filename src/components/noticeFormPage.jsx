@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import Dog from "../img/peticondog.png";
+import Cat from "../img/peticoncat.png";
+import Bird from "../img/peticonbird.png";
+import Other from "../img/peticonother.png";
+import Female from "../img/peticonfemale.png";
+import Male from "../img/peticonmale.png";
+import Unknown from "../img/peticonunknown.png";
+import Lost from "../img/peticonlost.png";
+import Found from "../img/peticonfound.png";
 import {
   Container,
   Button,
@@ -9,7 +17,8 @@ import {
   Input,
   Col,
   Alert,
-  Row
+  Row,
+  ButtonGroup
 } from "reactstrap";
 class NoticeFormPage extends Component {
   constructor(props) {
@@ -47,7 +56,7 @@ class NoticeFormPage extends Component {
     this.handleTagsChange = this.handleTagsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
-    this.handleRadioChange = this.handleRadioChange.bind(this);
+    this.handleFoundChange = this.handleFoundChange.bind(this);
   }
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
@@ -97,8 +106,8 @@ class NoticeFormPage extends Component {
     this.setState({ postcode: event.target.value });
     console.log(this.state);
   }
-  handleSpeciesChange(event) {
-    this.setState({ species: event.target.value });
+  handleSpeciesChange(name) {
+    this.setState({ species: name });
     console.log(this.state);
   }
 
@@ -131,8 +140,8 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
-  handleGenderChange(event) {
-    this.setState({ gender: event.target.value });
+  handleGenderChange(value) {
+    this.setState({ gender: value });
     console.log(this.state);
   }
   handleLastSeenChange(event) {
@@ -145,8 +154,8 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
 
-  handleRadioChange(event) {
-    this.setState({ found: event.target.value });
+  handleFoundChange(value) {
+    this.setState({ found: value });
     console.log(this.state);
   }
 
@@ -189,7 +198,9 @@ class NoticeFormPage extends Component {
               " " +
               String.prototype.toLowerCase.apply(this.state.neutered) +
               " " +
-              String.prototype.toLocaleLowerCase.apply(this.state.lost),
+              String.prototype.toLocaleLowerCase.apply(this.state.lost) +
+              " " +
+              String.prototype.toLocaleLowerCase.apply(this.state.community),
             pic1: this.state.pic1,
             pic2: this.state.pic2,
             pic3: this.state.pic3
@@ -225,7 +236,7 @@ class NoticeFormPage extends Component {
 
   render() {
     return (
-      <div style={{ background: "#e6e6ca" }}>
+      <div style={{ background: "#e6e6ca", fontSize: "20px" }}>
         <Container style={{ paddingTop: "20px" }}>
           <Form>
             <FormGroup row>
@@ -260,37 +271,137 @@ class NoticeFormPage extends Component {
             </FormGroup>
             <Container style={{ paddingBottom: "15px" }}>
               <Row>
-                <Label sm={2} style={{ paddingLeft: "0px" }} />
-                <Col sm={5}>
-                  <FormGroup check>
-                    <Label check>
-                      <Input
-                        type="radio"
-                        value="lost"
-                        checked={this.state.found === "lost"}
-                        onChange={this.handleRadioChange}
-                      />
-                      Lost
-                    </Label>
-                  </FormGroup>
+                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                  <Label style={{ paddingTop: "30px" }}>This pet is</Label>
                 </Col>
-                <Col sm={5}>
-                  <FormGroup check disabled>
-                    <Label check>
-                      <Input
-                        type="radio"
-                        value="found"
-                        checked={this.state.found === "found"}
-                        onChange={this.handleRadioChange}
-                      />
-                      Found
-                    </Label>
-                  </FormGroup>
+
+                <Col sm={12} md={4}>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => this.handleFoundChange("lost")}
+                      active={this.state.found === "lost"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                    >
+                      <img style={{ width: "70%" }} src={Lost} />
+                    </Button>
+                    <Button
+                      active={this.state.found === "found"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                      onClick={() => this.handleFoundChange("found")}
+                    >
+                      <img style={{ width: "70%" }} src={Found} />
+                    </Button>
+                  </ButtonGroup>
                 </Col>
+
+                <Col sm={12} md={3} />
               </Row>
             </Container>
+            <Container style={{ padding: "10px" }}>
+              <Row>
+                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                  <Label style={{ paddingTop: "30px" }}>Species</Label>
+                </Col>
+                <Col sm={12} md={4}>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => this.handleSpeciesChange("dog")}
+                      active={this.state.species === "dog"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                    >
+                      <img style={{ width: "100%" }} src={Dog} />
+                    </Button>
+                    <Button
+                      active={this.state.species === "cat"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                      onClick={() => this.handleSpeciesChange("cat")}
+                    >
+                      <img style={{ width: "100%" }} src={Cat} />
+                    </Button>
+                    <Button
+                      active={this.state.species === "bird"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                      onClick={() => this.handleSpeciesChange("bird")}
+                    >
+                      <img style={{ width: "100%" }} src={Bird} />
+                    </Button>
+                    <Button
+                      onClick={() => this.handleSpeciesChange("other")}
+                      active={this.state.species === "other"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                    >
+                      <img style={{ width: "100%" }} src={Other} />
+                    </Button>
+                  </ButtonGroup>
+                </Col>
+                <Col sm={12} md={3} />
+              </Row>
+            </Container>
+
+            <Container style={{ paddingBottom: "15px" }}>
+              <Row>
+                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                  <Label style={{ paddingTop: "20px" }}>Gender</Label>
+                </Col>
+                <Col sm={12} md={4}>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => this.handleGenderChange("female")}
+                      active={this.state.gender === "female"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                    >
+                      <img style={{ width: "60%" }} src={Female} />
+                    </Button>
+                    <Button
+                      active={this.state.gender === "male"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                      onClick={() => this.handleGenderChange("male")}
+                    >
+                      <img style={{ width: "60%" }} src={Male} />
+                    </Button>
+                    <Button
+                      active={this.state.gender === "unknown"}
+                      style={{
+                        borderColor: "transparent",
+                        backgroundColor: "#00000000"
+                      }}
+                      onClick={() => this.handleGenderChange("unknown")}
+                    >
+                      <img style={{ width: "60%" }} src={Unknown} />
+                    </Button>
+                  </ButtonGroup>
+                </Col>
+
+                <Col sm={12} md={5} />
+              </Row>
+            </Container>
+
             <FormGroup row>
-              <Label sm={2}> Description of the pet</Label>
+              <Label sm={2}> Description of pet</Label>
 
               <Col sm={10}>
                 <Input
@@ -332,22 +443,8 @@ class NoticeFormPage extends Component {
                 />
               </Col>
             </FormGroup>
+
             <FormGroup row>
-              <Label sm={2}> Species </Label>
-              <Col sm={4}>
-                <Input
-                  type="select"
-                  name="species"
-                  value={this.state.species}
-                  onChange={this.handleSpeciesChange}
-                >
-                  <option />
-                  <option>Dog</option>
-                  <option>Cat</option>
-                  <option>Bird</option>
-                  <option>Other</option>
-                </Input>
-              </Col>
               <Label sm={2}> Colour </Label>
               <Col sm={4}>
                 <Input
@@ -362,21 +459,6 @@ class NoticeFormPage extends Component {
                   <option>Orange</option>
                   <option>Brown</option>
                   <option>Grey</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label sm={2}> Gender </Label>
-              <Col sm={4}>
-                <Input
-                  type="select"
-                  name="gender"
-                  value={this.state.gender}
-                  onChange={this.handleGenderChange}
-                >
-                  <option />
-                  <option>Male</option>
-                  <option>Female</option>
                 </Input>
               </Col>
               <Label sm={2}> Neutered </Label>
