@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardHeader,
-  CardSubtitle
-} from "reactstrap";
+import { Card, CardText, CardBody, CardHeader, CardSubtitle } from "reactstrap";
 import CardPictureList from "./cardPictureList";
 
 require("any-promise/register/q");

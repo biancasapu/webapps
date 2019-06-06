@@ -1,6 +1,7 @@
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
-import React, { Component } from "react";
+import React from "react";
+import { Card, CardText, CardBody, CardHeader } from "reactstrap";
 
 import CardPictureList from "./cardPictureList";
 
@@ -51,14 +52,27 @@ class GoogleMapsContainer extends React.Component {
           onClick={this.onMarkerClick}
           markerInfoWindow={
             <div>
-              <h5>{store.title}</h5>
+              {/* <h5>{store.title}</h5>
               <CardPictureList
                 pic1={store.pic1}
                 pic2={store.pic2}
                 pic3={store.pic3}
               />
               <h5>{store.description}</h5>
-              <h6>{store.tags}</h6>
+              <h6 className="text-muted">{store.tags}</h6> */}
+              <Card style={{ fontFamily: "Georgia, serif", fontSize: "15px" }}>
+                <CardHeader tag="h3">{store.title}</CardHeader>
+                <CardPictureList
+                  pic1={store.pic1}
+                  pic2={store.pic2}
+                  pic3={store.pic3}
+                />
+                <CardBody>
+                  <CardText>{store.description}</CardText>
+                  <CardText className="text-muted">{store.tags}</CardText>
+                  {/* <Button>Help!</Button> */}
+                </CardBody>
+              </Card>
             </div>
           }
           name={store.id}
