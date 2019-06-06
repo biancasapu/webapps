@@ -69,7 +69,13 @@ class GoogleMapsContainer extends React.Component {
                 />
                 <CardBody>
                   <CardText>{store.description}</CardText>
-                  <CardText className="text-muted">{store.tags}</CardText>
+                  <CardText>{"Last seen: " + store.lastseen}</CardText>
+                  <CardText>{"Contact  : " + store.contact}</CardText>
+                </CardBody>
+                <CardBody>
+                  <CardText style={{ fontSize: "10px" }} className="text-muted">
+                    {store.tags}
+                  </CardText>
                   {/* <Button>Help!</Button> */}
                 </CardBody>
               </Card>
