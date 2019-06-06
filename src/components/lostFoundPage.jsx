@@ -48,9 +48,6 @@ class LostFoundPage extends Component {
       <Container style={{ paddingTop: "20px", fontFamily: "Georgia, serif" }}>
         <Form>
           <FormGroup row>
-            {/* <Col xs={3} md={2}>
-              <Label> Search notice </Label>
-            </Col> */}
             <Col>
               <Input
                 placeholder="Enter your tags here. (e.g. species community colour etc.)"

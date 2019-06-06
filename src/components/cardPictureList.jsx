@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardHeader,
-  CardSubtitle
-} from "reactstrap";
+import { CardImg } from "reactstrap";
 
 class CardPictureList extends Component {
   constructor(props) {

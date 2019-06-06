@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NoticeFormPage from "./noticeFormPage";
 import LostFoundPage from "./lostFoundPage";
+import SplashPage from "./splashPage";
 import { Navbar, NavbarBrand, Nav, Row, Col, Container } from "reactstrap";
 import GoogleApiWrapper from "./mapsAPI";
 
@@ -17,12 +18,21 @@ class Header extends Component {
                   Petabase
                 </NavbarBrand>
               </Col>
-              <Col xs="4" md="auto">
+              <Col xs="3" md="auto">
                 <Link style={{ color: "white" }} class="nav-link" to="/">
+                  Home <span class="sr-only">(current)</span>
+                </Link>
+              </Col>
+              <Col xs="3" md="auto">
+                <Link
+                  style={{ color: "white" }}
+                  class="nav-link"
+                  to="/Submit-Page"
+                >
                   Submit Notice <span class="sr-only">(current)</span>
                 </Link>
               </Col>
-              <Col xs="4" md="auto">
+              <Col xs="3" md="auto">
                 <Link
                   style={{ color: "white" }}
                   class="nav-link"
@@ -31,7 +41,7 @@ class Header extends Component {
                   Lost & Found
                 </Link>
               </Col>
-              <Col xs="4" md="auto">
+              <Col xs="3" md="auto">
                 <Link style={{ color: "white" }} class="nav-link" to="/Map">
                   Map
                 </Link>
@@ -41,7 +51,8 @@ class Header extends Component {
           <Nav className="ml-auto" navbar />
         </Navbar>
 
-        <Route exact path="/" component={NoticeFormPage} />
+        <Route exact path="/" component={SplashPage} />
+        <Route exact path="/Submit-Page" component={NoticeFormPage} />
         <Route path="/Lost-and-Found" component={LostFoundPage} />
         <Route path="/Map" component={GoogleApiWrapper} />
       </Router>
