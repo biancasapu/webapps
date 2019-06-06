@@ -1,15 +1,7 @@
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardHeader,
-  CardSubtitle
-} from "reactstrap";
+
 import CardPictureList from "./cardPictureList";
 
 class GoogleMapsContainer extends React.Component {
@@ -48,10 +40,6 @@ class GoogleMapsContainer extends React.Component {
 
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
-      //console.log(store);
-      // console.log(store.pic1);
-      // console.log(store.pic2);
-      // console.log(store.pic3);
       return (
         <Marker
           key={index}
@@ -62,11 +50,16 @@ class GoogleMapsContainer extends React.Component {
           }}
           onClick={this.onMarkerClick}
           picList={
-            <CardPictureList
-              pic1={store.pic1}
-              pic2={store.pic2}
-              pic3={store.pic3}
-            />
+            <div>
+              <h5>{store.title}</h5>
+              <CardPictureList
+                pic1={store.pic1}
+                pic2={store.pic2}
+                pic3={store.pic3}
+              />
+              <h5>{store.description}</h5>
+              <h6>{store.tags}</h6>
+            </div>
           }
           name={store.id}
           //onClick={() => console.log("You clicked me!")}
@@ -125,7 +118,8 @@ class GoogleMapsContainer extends React.Component {
             onClose={this.onClose}
           >
             <div>
-              <h4>{this.state.selectedPlace.picList}</h4>
+              {/* <h5>"Title text"</h5> */}
+              <h2>{this.state.selectedPlace.picList}</h2>
             </div>
           </InfoWindow>
 
