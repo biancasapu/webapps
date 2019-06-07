@@ -198,9 +198,9 @@ class NoticeFormPage extends Component {
               " " +
               String.prototype.toLowerCase.apply(this.state.neutered) +
               " " +
-              String.prototype.toLocaleLowerCase.apply(this.state.lost) +
+              String.prototype.toLowerCase.apply(this.state.found) +
               " " +
-              String.prototype.toLocaleLowerCase.apply(this.state.community),
+              String.prototype.toLowerCase.apply(this.state.community),
             pic1: this.state.pic1,
             pic2: this.state.pic2,
             pic3: this.state.pic3
