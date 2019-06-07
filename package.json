@@ -6,6 +6,7 @@
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
+    "create-react-class": "^15.6.3",
     "dotenv": "^8.0.0",
     "google-maps-react": "^2.0.2",
     "helmet": "^3.18.0",

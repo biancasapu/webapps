@@ -8,6 +8,7 @@ import Male from "../img/peticonmale.png";
 import Unknown from "../img/peticonunknown.png";
 import Lost from "../img/peticonlost.png";
 import Found from "../img/peticonfound.png";
+
 import {
   Container,
   Button,
@@ -20,6 +21,297 @@ import {
   Row,
   ButtonGroup
 } from "reactstrap";
+
+var createReactClass = require("create-react-class");
+var LostButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on
+    });
+
+    this.setState({
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "lost"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Lost} />
+      </Button>
+    );
+  }
+});
+
+var FoundButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "found"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Found} />
+      </Button>
+    );
+  }
+});
+
+var DogButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "dog"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Dog} />
+      </Button>
+    );
+  }
+});
+var CatButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "cat"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Cat} />
+      </Button>
+    );
+  }
+});
+
+var BirdButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "bird"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Bird} />
+      </Button>
+    );
+  }
+});
+
+var OtherButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "other"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Other} />
+      </Button>
+    );
+  }
+});
+
+var FemaleButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "female"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Female} />
+      </Button>
+    );
+  }
+});
+
+var MaleButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "male"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Male} />
+      </Button>
+    );
+  }
+});
+
+var UnknownButton = createReactClass({
+  getInitialState: function() {
+    return {
+      on: false,
+      sat: 100,
+      borderColor: "transparent"
+    };
+  },
+
+  handleClick: function() {
+    this.setState({
+      on: !this.state.on,
+      borderColor: this.state.on ? "grey" : "transparent"
+    });
+  },
+
+  render: function() {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active={this.state.found === "unknown"}
+        style={{
+          borderColor: this.state.borderColor,
+          backgroundColor: "#00000000"
+        }}
+      >
+        <img style={{ width: "70%" }} src={Unknown} />
+      </Button>
+    );
+  }
+});
+
 class NoticeFormPage extends Component {
   constructor(props) {
     super(props);
@@ -277,26 +569,25 @@ class NoticeFormPage extends Component {
 
                 <Col sm={12} md={4}>
                   <ButtonGroup>
-                    <Button
+                    <LostButton
                       onClick={() => this.handleFoundChange("lost")}
                       active={this.state.found === "lost"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
-                    >
-                      <img style={{ width: "70%" }} src={Lost} />
-                    </Button>
-                    <Button
+                    />
+                    {/* // >
+                    //   <img style={{ width: "70%" }} src={Lost} />
+                    // </Button> */}
+                    <FoundButton
                       active={this.state.found === "found"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
                       onClick={() => this.handleFoundChange("found")}
-                    >
-                      <img style={{ width: "70%" }} src={Found} />
-                    </Button>
+                    />
                   </ButtonGroup>
                 </Col>
 
@@ -310,46 +601,46 @@ class NoticeFormPage extends Component {
                 </Col>
                 <Col sm={12} md={4}>
                   <ButtonGroup>
-                    <Button
+                    <DogButton
                       onClick={() => this.handleSpeciesChange("dog")}
                       active={this.state.species === "dog"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
-                    >
-                      <img style={{ width: "100%" }} src={Dog} />
-                    </Button>
-                    <Button
+                    />
+                    {/* <img style={{ width: "100%" }} src={Dog} />
+                    </Button> */}
+                    <CatButton
                       active={this.state.species === "cat"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
                       onClick={() => this.handleSpeciesChange("cat")}
-                    >
-                      <img style={{ width: "100%" }} src={Cat} />
-                    </Button>
-                    <Button
+                    />
+                    {/* <img style={{ width: "100%" }} src={Cat} />
+                    </Button> */}
+                    <BirdButton
                       active={this.state.species === "bird"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
                       onClick={() => this.handleSpeciesChange("bird")}
-                    >
-                      <img style={{ width: "100%" }} src={Bird} />
-                    </Button>
-                    <Button
+                    />
+                    {/* <img style={{ width: "100%" }} src={Bird} />
+                    </Button> */}
+                    <OtherButton
                       onClick={() => this.handleSpeciesChange("other")}
                       active={this.state.species === "other"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
-                    >
-                      <img style={{ width: "100%" }} src={Other} />
-                    </Button>
+                    />
+                    {/* <img style={{ width: "100%" }} src={Other} />
+                    </Button> */}
                   </ButtonGroup>
                 </Col>
                 <Col sm={12} md={3} />
@@ -363,36 +654,36 @@ class NoticeFormPage extends Component {
                 </Col>
                 <Col sm={12} md={4}>
                   <ButtonGroup>
-                    <Button
+                    <FemaleButton
                       onClick={() => this.handleGenderChange("female")}
                       active={this.state.gender === "female"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
-                    >
-                      <img style={{ width: "60%" }} src={Female} />
-                    </Button>
-                    <Button
+                    />
+                    {/* <img style={{ width: "60%" }} src={Female} />
+                    </Button> */}
+                    <MaleButton
                       active={this.state.gender === "male"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
                       onClick={() => this.handleGenderChange("male")}
-                    >
-                      <img style={{ width: "60%" }} src={Male} />
-                    </Button>
-                    <Button
+                    />
+                    {/* <img style={{ width: "60%" }} src={Male} />
+                    </Button> */}
+                    <UnknownButton
                       active={this.state.gender === "unknown"}
                       style={{
                         borderColor: "transparent",
                         backgroundColor: "#00000000"
                       }}
                       onClick={() => this.handleGenderChange("unknown")}
-                    >
-                      <img style={{ width: "60%" }} src={Unknown} />
-                    </Button>
+                    />
+                    {/* <img style={{ width: "60%" }} src={Unknown} />
+                    </Button> */}
                   </ButtonGroup>
                 </Col>
 
