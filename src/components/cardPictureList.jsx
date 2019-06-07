@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import { CardImg } from "reactstrap";
 
+const cardImgStyle = {
+  width: "100%",
+  borderRadius: "10%",
+  marginBottom: "20px"
+};
+
 class CardPictureList extends Component {
   constructor(props) {
     super(props);
@@ -18,31 +24,19 @@ class CardPictureList extends Component {
       <Row className="mt-3 ml-2 mr-2">
         <Col sm="4">
           <CardImg
-            style={{
-              width: "100%",
-              borderRadius: "10%",
-              marginBottom: "20px"
-            }}
+            style={cardImgStyle}
             src={this.state.pic1 ? this.state.pic1 : null}
           />
         </Col>
         <Col sm="4">
           <CardImg
-            style={{
-              width: "100%",
-              borderRadius: "10%",
-              marginBottom: "20px"
-            }}
+            style={cardImgStyle}
             src={this.state.pic2 ? this.state.pic2 : null}
           />
         </Col>
         <Col sm="4">
           <CardImg
-            style={{
-              width: "100%",
-              borderRadius: "10%",
-              marginBottom: "20px"
-            }}
+            style={cardImgStyle}
             src={this.state.pic3 ? this.state.pic3 : null}
           />
         </Col>
