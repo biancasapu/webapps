@@ -70,6 +70,7 @@ class GoogleMapsContainer extends React.Component {
                 <CardBody>
                   <CardText>{store.description}</CardText>
                   <CardText>{"Last seen: " + store.lastseen}</CardText>
+                  <CardText>{"In: " + store.pct}</CardText>
                   <CardText>{"Contact  : " + store.contact}</CardText>
                 </CardBody>
                 <CardBody>
