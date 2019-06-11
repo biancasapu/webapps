@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import Dog from "../img/peticondog.png";
-import Cat from "../img/peticoncat.png";
-import Bird from "../img/peticonbird.png";
-import Other from "../img/peticonother.png";
-import Female from "../img/peticonfemale.png";
-import Male from "../img/peticonmale.png";
-import Unknown from "../img/peticonunknown.png";
-import Lost from "../img/peticonlost.png";
-import Found from "../img/peticonfound.png";
-
+import Notice from "./notice.jsx";
 import {
   Container,
   Button,
@@ -21,296 +12,6 @@ import {
   Row,
   ButtonGroup
 } from "reactstrap";
-
-var createReactClass = require("create-react-class");
-var LostButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on
-    });
-
-    this.setState({
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "lost"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Lost} />
-      </Button>
-    );
-  }
-});
-
-var FoundButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "found"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Found} />
-      </Button>
-    );
-  }
-});
-
-var DogButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "dog"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Dog} />
-      </Button>
-    );
-  }
-});
-var CatButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "cat"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Cat} />
-      </Button>
-    );
-  }
-});
-
-var BirdButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "bird"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Bird} />
-      </Button>
-    );
-  }
-});
-
-var OtherButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "other"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Other} />
-      </Button>
-    );
-  }
-});
-
-var FemaleButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "female"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Female} />
-      </Button>
-    );
-  }
-});
-
-var MaleButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "male"}
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Male} />
-      </Button>
-    );
-  }
-});
-
-var UnknownButton = createReactClass({
-  getInitialState: function() {
-    return {
-      on: false,
-      sat: 100,
-      borderColor: "transparent"
-    };
-  },
-
-  handleClick: function() {
-    this.setState({
-      on: !this.state.on,
-      borderColor: this.state.on ? "grey" : "transparent"
-    });
-  },
-
-  render: function() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        active={this.state.found === "male female"} //makes it appear in all searches by gender
-        style={{
-          borderColor: this.state.borderColor,
-          backgroundColor: "#00000000"
-        }}
-      >
-        <img style={{ width: "70%" }} src={Unknown} />
-      </Button>
-    );
-  }
-});
 
 class NoticeFormPage extends Component {
   _isMounted = false;
@@ -333,7 +34,8 @@ class NoticeFormPage extends Component {
       found: "",
       visible: false,
       notices: [],
-      suggestions: []
+      hasSuggestions: false,
+      suggestions: 0
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -354,6 +56,7 @@ class NoticeFormPage extends Component {
     this.uploadImage = this.uploadImage.bind(this);
     this.handleFoundChange = this.handleFoundChange.bind(this);
     this.loadPage = this.loadPage.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
   }
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
@@ -390,15 +93,22 @@ class NoticeFormPage extends Component {
   }
 
   handleCommunityChange(event) {
-    this.setState({ community: event.target.value });
-
-    var s = this.state.notices.filter(notice => {
-      return notice.community === this.state.community;
-    });
-    console.log(s);
-    if (s.length != 0) {
-      this.setState({ notices: s });
+    var s = [];
+    for (var i = 0; i < this.state.notices.length; i++) {
+      if (this.state.notices[i].community === event.target.value) {
+        s.push(this.state.notices[i]);
+      }
     }
+    console.log(s);
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      community: event.target.value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
+
     console.log(this.state);
   }
 
@@ -411,25 +121,38 @@ class NoticeFormPage extends Component {
     this.setState({ postcode: event.target.value });
     console.log(this.state);
   }
-  handleSpeciesChange(name) {
-    this.setState({ species: name });
+  handleSpeciesChange(value) {
     var s = this.state.notices.filter(notice => {
-      return notice.tags.includes(this.state.species);
+      return notice.tags.includes(value);
     });
-    if (s.length != 0) {
-      this.setState({ notices: s });
-    }
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      species: value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
+
     console.log(this.state);
   }
 
   handleColourChange(event) {
-    this.setState({ colour: event.target.value });
-    var s = this.state.notices.filter(notice => {
-      return notice.tags.includes(this.state.colour);
-    });
-    if (s.length != 0) {
-      this.setState({ notices: s });
+    var s = [];
+    for (var i = 0; i < this.state.notices.length; i++) {
+      if (this.state.notices[i].tags.includes(event.target.value)) {
+        s.push(this.state.notices[i]);
+      }
     }
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      colour: event.target.value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
+
     console.log(this.state);
   }
 
@@ -458,13 +181,24 @@ class NoticeFormPage extends Component {
   }
 
   handleGenderChange(value) {
-    this.setState({ gender: value });
-    var s = this.state.notices.filter(notice => {
-      return notice.tags.includes(this.state.gender);
-    });
-    if (s.length != 0) {
-      this.setState({ notices: s });
+    // var s = this.state.notices.filter(notice => {
+    //   return notice.tags.includes(value);
+    // });
+    var s = [];
+    for (var i = 0; i < this.state.notices.length; i++) {
+      if (this.state.notices[i].tags.includes(value)) {
+        s.push(this.state.notices[i]);
+      }
     }
+
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      gender: value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
     console.log(this.state);
   }
 
@@ -474,26 +208,42 @@ class NoticeFormPage extends Component {
   }
 
   handleNeuteredChange(event) {
-    this.setState({ neutered: event.target.value });
-    var s = this.state.notices.filter(notice => {
-      return notice.tags.includes(this.state.neutered);
-    });
-    if (s.length != 0) {
-      this.setState({ notices: s });
+    var s = [];
+    for (var i = 0; i < this.state.notices.length; i++) {
+      if (this.state.notices[i].tags.includes(event.target.value)) {
+        s.push(this.state.notices[i]);
+      }
     }
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      neutered: event.target.value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
+
     console.log(this.state);
   }
 
   handleFoundChange(value) {
-    this.setState({ found: value });
     var s = this.state.notices.filter(notice => {
       // If the person lost the dog, we're looking for found notices and vice versa
-      return !notice.tags.includes(this.state.found);
+      return !notice.tags.includes(value);
     });
-    if (s.length != 0) {
-      this.setState({ notices: s });
-    }
+    var curr = this.state.suggestions + 1;
+    var display = curr >= 4;
+    this.setState({
+      found: value,
+      notices: s,
+      suggestions: curr,
+      hasSuggestions: display
+    });
+
     console.log(this.state);
+  }
+  onDismiss() {
+    this.setState({ hasSuggestions: false });
   }
 
   handleSubmit() {
@@ -606,33 +356,36 @@ class NoticeFormPage extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            <Container style={{ paddingBottom: "15px" }}>
+            <Container>
               <Row>
-                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                <Col sm={12} md={3} style={{ padding: "0%" }}>
                   <Label style={{ paddingTop: "30px" }}>This pet is</Label>
                 </Col>
 
-                <Col sm={12} md={4}>
+                <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
-                    <LostButton
+                    <Button
                       onClick={() => this.handleFoundChange("lost")}
                       active={this.state.found === "lost"}
+                      size="lg"
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
-                    />
-                    {/* // >
-                    //   <img style={{ width: "70%" }} src={Lost} />
-                    // </Button> */}
-                    <FoundButton
+                    >
+                      Lost
+                    </Button>
+                    <Button
                       active={this.state.found === "found"}
+                      size="lg"
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
                       onClick={() => this.handleFoundChange("found")}
-                    />
+                    >
+                      Found
+                    </Button>
                   </ButtonGroup>
                 </Col>
 
@@ -641,51 +394,59 @@ class NoticeFormPage extends Component {
             </Container>
             <Container style={{ padding: "10px" }}>
               <Row>
-                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                <Col sm={12} md={3} style={{ padding: "0%" }}>
                   <Label style={{ paddingTop: "30px" }}>Species</Label>
                 </Col>
-                <Col sm={12} md={4}>
+                <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
-                    <DogButton
+                    <Button
+                      size="lg"
                       onClick={() => this.handleSpeciesChange("dog")}
                       active={this.state.species === "dog"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
-                    />
-                    {/* <img style={{ width: "100%" }} src={Dog} />
-                    </Button> */}
-                    <CatButton
+                    >
+                      {" "}
+                      Dog{" "}
+                    </Button>
+                    <Button
+                      size="lg"
                       active={this.state.species === "cat"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
                       onClick={() => this.handleSpeciesChange("cat")}
-                    />
-                    {/* <img style={{ width: "100%" }} src={Cat} />
-                    </Button> */}
-                    <BirdButton
+                    >
+                      {" "}
+                      Cat{" "}
+                    </Button>
+                    <Button
+                      size="lg"
                       active={this.state.species === "bird"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
                       onClick={() => this.handleSpeciesChange("bird")}
-                    />
-                    {/* <img style={{ width: "100%" }} src={Bird} />
-                    </Button> */}
-                    <OtherButton
+                    >
+                      {" "}
+                      Bird{" "}
+                    </Button>
+                    <Button
+                      size="lg"
                       onClick={() => this.handleSpeciesChange("other")}
                       active={this.state.species === "other"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
-                    />
-                    {/* <img style={{ width: "100%" }} src={Other} />
-                    </Button> */}
+                    >
+                      {" "}
+                      Other{" "}
+                    </Button>
                   </ButtonGroup>
                 </Col>
                 <Col sm={12} md={3} />
@@ -694,48 +455,119 @@ class NoticeFormPage extends Component {
 
             <Container style={{ paddingBottom: "15px" }}>
               <Row>
-                <Col sm={12} md={5} style={{ padding: "0%" }}>
+                <Col sm={12} md={3} style={{ padding: "0%" }}>
                   <Label style={{ paddingTop: "20px" }}>Gender</Label>
                 </Col>
-                <Col sm={12} md={4}>
+                <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
-                    <FemaleButton
+                    <Button
+                      size="lg"
                       onClick={() => this.handleGenderChange("female")}
                       active={this.state.gender === "female"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
-                    />
-                    {/* <img style={{ width: "60%" }} src={Female} />
-                    </Button> */}
-                    <MaleButton
+                    >
+                      {" "}
+                      Female{" "}
+                    </Button>
+                    <Button
+                      size="lg"
                       active={this.state.gender === "male"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
                       onClick={() => this.handleGenderChange("male")}
-                    />
-                    {/* <img style={{ width: "60%" }} src={Male} />
-                    </Button> */}
-                    <UnknownButton
-                      active={this.state.gender === "unknown"}
+                    >
+                      {" "}
+                      Male{" "}
+                    </Button>
+                    <Button
+                      size="lg"
+                      active={this.state.gender === "male female"}
                       style={{
-                        borderColor: "transparent",
-                        backgroundColor: "#00000000"
+                        borderColor: "#634839",
+                        backgroundColor: "#95c18f"
                       }}
-                      onClick={() => this.handleGenderChange("unknown")}
-                    />
-                    {/* <img style={{ width: "60%" }} src={Unknown} />
-                    </Button> */}
+                      onClick={() => this.handleGenderChange("male female")}
+                    >
+                      {" "}
+                      Unknown{" "}
+                    </Button>
                   </ButtonGroup>
                 </Col>
 
                 <Col sm={12} md={5} />
               </Row>
             </Container>
-
+            <FormGroup row>
+              <Label sm={2}> Colour </Label>
+              <Col sm={4}>
+                <Input
+                  type="select"
+                  name="colour"
+                  value={this.state.colour}
+                  onChange={this.handleColourChange}
+                >
+                  <option />
+                  <option>cream</option>
+                  <option>white</option>
+                  <option>orange</option>
+                  <option>black</option>
+                  <option>brown</option>
+                  <option>grey</option>
+                </Input>
+              </Col>
+              <Label sm={2}> Neutered </Label>
+              <Col sm={4}>
+                <Input
+                  type="select"
+                  name="neutered"
+                  value={this.state.neutered}
+                  onChange={this.handleNeuteredChange}
+                >
+                  <option />
+                  <option>neutered</option>
+                  <option>intact</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <Alert
+              color="success"
+              isOpen={this.state.hasSuggestions}
+              toggle={this.onDismiss}
+            >
+              <div>
+                <Container>
+                  <Row>
+                    <Col xs="12" md="2" />
+                    <Col xs="12" md="10">
+                      {this.state.notices.map(notice => {
+                        return (
+                          <div>
+                            <Notice
+                              id={notice.id}
+                              title={notice.title}
+                              community={notice.community}
+                              description={notice.description}
+                              postcode={notice.postcode}
+                              tags={notice.tags}
+                              pic1={notice.pic1}
+                              pic2={notice.pic2}
+                              pic3={notice.pic3}
+                              contact={notice.contact}
+                              lastSeen={notice.lastseen}
+                            />
+                          </div>
+                        );
+                      })}
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </Alert>
             <FormGroup row>
               <Label sm={2}> Description of pet</Label>
 
@@ -780,37 +612,6 @@ class NoticeFormPage extends Component {
               </Col>
             </FormGroup>
 
-            <FormGroup row>
-              <Label sm={2}> Colour </Label>
-              <Col sm={4}>
-                <Input
-                  type="select"
-                  name="colour"
-                  value={this.state.colour}
-                  onChange={this.handleColourChange}
-                >
-                  <option />
-                  <option>Black</option>
-                  <option>White</option>
-                  <option>Orange</option>
-                  <option>Brown</option>
-                  <option>Grey</option>
-                </Input>
-              </Col>
-              <Label sm={2}> Neutered </Label>
-              <Col sm={4}>
-                <Input
-                  type="select"
-                  name="neutered"
-                  value={this.state.neutered}
-                  onChange={this.handleNeuteredChange}
-                >
-                  <option className="text-muted" />
-                  <option>Neutered</option>
-                  <option>Intact</option>
-                </Input>
-              </Col>
-            </FormGroup>
             <FormGroup row>
               <Label sm={2}>Image</Label>
               <Col sm={5}>
