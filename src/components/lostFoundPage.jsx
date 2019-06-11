@@ -29,9 +29,11 @@ class LostFoundPage extends Component {
     this.setState({ notices: [], ids: [] });
     console.log(tags);
     for (var i = 0; i < tags.length - 1; i++) {
-      tagsUri = tagsUri + tags[i] + "%20";
+      tagsUri = tagsUri + String.prototype.toLowerCase.apply(tags[i]) + "%20";
     }
-    tagsUri = tagsUri + tags[tags.length - 1];
+    tagsUri =
+      tagsUri + String.prototype.toLowerCase.apply(tags[tags.length - 1]);
+
     fetch(tagsUri)
       .then(function(response) {
         return response.json();

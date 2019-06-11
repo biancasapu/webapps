@@ -10,22 +10,47 @@ class Header extends Component {
   render() {
     return (
       <Router>
-        <Navbar color="dark" dark style={{ fontFamily: "Georgia, serif" }}>
-          <Container>
+        <Navbar
+          color="dark"
+          dark
+          style={{
+            fontFamily: "Georgia, serif",
+            textAlign: "center",
+            padding: "0px"
+          }}
+        >
+          <Container style={{ paddingLeft: "0px", paddingRight: "0px" }}>
             <Row>
               <Col xs="12" md="auto" style={{ textAlign: "center" }}>
-                <NavbarBrand className="logo" style={{ color: "white" }}>
+                <NavbarBrand
+                  className="logo"
+                  style={{ color: "white", margin: "0px", fontSize: "30px" }}
+                >
                   Petabase
                 </NavbarBrand>
               </Col>
               <Col xs="3" md="auto">
-                <Link style={{ color: "white" }} class="nav-link" to="/">
+                <Link
+                  style={{
+                    color: "white",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    paddingTop: "20px"
+                  }}
+                  class="nav-link"
+                  to="/"
+                >
                   Home <span class="sr-only">(current)</span>
                 </Link>
               </Col>
               <Col xs="3" md="auto">
                 <Link
-                  style={{ color: "white" }}
+                  style={{
+                    color: "white",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    paddingTop: "20px"
+                  }}
                   class="nav-link"
                   to="/Submit-Page"
                 >
@@ -34,7 +59,12 @@ class Header extends Component {
               </Col>
               <Col xs="3" md="auto">
                 <Link
-                  style={{ color: "white" }}
+                  style={{
+                    color: "white",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    paddingTop: "20px"
+                  }}
                   class="nav-link"
                   to="/Lost-and-Found"
                 >
@@ -42,7 +72,16 @@ class Header extends Component {
                 </Link>
               </Col>
               <Col xs="3" md="auto">
-                <Link style={{ color: "white" }} class="nav-link" to="/Map">
+                <Link
+                  style={{
+                    color: "white",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    paddingTop: "20px"
+                  }}
+                  class="nav-link"
+                  to="/Map"
+                >
                   Map
                 </Link>
               </Col>

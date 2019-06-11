@@ -300,7 +300,7 @@ var UnknownButton = createReactClass({
     return (
       <Button
         onClick={this.handleClick}
-        active={this.state.found === "unknown"}
+        active={this.state.found === "male female"} //makes it appear in all searches by gender
         style={{
           borderColor: this.state.borderColor,
           backgroundColor: "#00000000"
@@ -313,6 +313,7 @@ var UnknownButton = createReactClass({
 });
 
 class NoticeFormPage extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -330,8 +331,11 @@ class NoticeFormPage extends Component {
       pic3: "",
       tags: "",
       found: "",
-      visible: false
+      visible: false,
+      notices: [],
+      suggestions: []
     };
+
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleCommunityChange = this.handleCommunityChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -349,6 +353,7 @@ class NoticeFormPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.handleFoundChange = this.handleFoundChange.bind(this);
+    this.loadPage = this.loadPage.bind(this);
   }
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
@@ -386,6 +391,14 @@ class NoticeFormPage extends Component {
 
   handleCommunityChange(event) {
     this.setState({ community: event.target.value });
+
+    var s = this.state.notices.filter(notice => {
+      return notice.community === this.state.community;
+    });
+    console.log(s);
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
 
@@ -400,11 +413,23 @@ class NoticeFormPage extends Component {
   }
   handleSpeciesChange(name) {
     this.setState({ species: name });
+    var s = this.state.notices.filter(notice => {
+      return notice.tags.includes(this.state.species);
+    });
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
 
   handleColourChange(event) {
     this.setState({ colour: event.target.value });
+    var s = this.state.notices.filter(notice => {
+      return notice.tags.includes(this.state.colour);
+    });
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
 
@@ -434,8 +459,15 @@ class NoticeFormPage extends Component {
 
   handleGenderChange(value) {
     this.setState({ gender: value });
+    var s = this.state.notices.filter(notice => {
+      return notice.tags.includes(this.state.gender);
+    });
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
+
   handleLastSeenChange(event) {
     this.setState({ lastSeen: event.target.value });
     console.log(this.state);
@@ -443,11 +475,24 @@ class NoticeFormPage extends Component {
 
   handleNeuteredChange(event) {
     this.setState({ neutered: event.target.value });
+    var s = this.state.notices.filter(notice => {
+      return notice.tags.includes(this.state.neutered);
+    });
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
 
   handleFoundChange(value) {
     this.setState({ found: value });
+    var s = this.state.notices.filter(notice => {
+      // If the person lost the dog, we're looking for found notices and vice versa
+      return !notice.tags.includes(this.state.found);
+    });
+    if (s.length != 0) {
+      this.setState({ notices: s });
+    }
     console.log(this.state);
   }
 
@@ -823,6 +868,25 @@ class NoticeFormPage extends Component {
         </Container>
       </div>
     );
+  }
+
+  loadPage() {
+    fetch("http://webapps05backend.herokuapp.com/notice/*")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(response => {
+        this.setState({ notices: response });
+      });
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+    this.loadPage();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 }
 
