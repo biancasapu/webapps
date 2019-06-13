@@ -34,6 +34,7 @@ class NoticeFormPage extends Component {
       found: "",
       visible: false,
       notices: [],
+      filtered: [],
       hasSuggestions: false,
       suggestions: 0
     };
@@ -94,17 +95,33 @@ class NoticeFormPage extends Component {
 
   handleCommunityChange(event) {
     var s = [];
-    for (var i = 0; i < this.state.notices.length; i++) {
-      if (this.state.notices[i].community === event.target.value) {
-        s.push(this.state.notices[i]);
-      }
-    }
+    // for (var i = 0; i < this.state.notices.length; i++) {
+    //   if (this.state.notices[i].community === event.target.value) {
+    //     s.push(this.state.notices[i]);
+    //   }
+    // }
+    s = this.state.notices.filter(notice => {
+      return (
+        (this.state.species === "" ||
+          notice.tags.includes(this.state.species)) &&
+        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
+        (this.state.neutered === "" ||
+          notice.tags.includes(this.state.neutered)) &&
+        (this.state.gender === "" ||
+          notice.tags.includes(" " + this.state.gender)) &&
+        notice.tags.includes(
+          String.prototype.toLowerCase.apply(event.target.value)
+        ) &&
+        (this.state.found === "" || !notice.tags.includes(this.state.found))
+      );
+    });
+
     console.log(s);
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       community: event.target.value,
-      notices: s,
+      filtered: s,
       suggestions: curr,
       hasSuggestions: display
     });
@@ -122,14 +139,32 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
   handleSpeciesChange(value) {
-    var s = this.state.notices.filter(notice => {
-      return notice.tags.includes(value);
+    // var s = this.state.notices.filter(notice => {
+    //   return notice.tags.includes(value);
+    // });
+    var s = [];
+    s = this.state.notices.filter(notice => {
+      return (
+        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+          notice.tags.includes(
+            String.prototype.toLowerCase.apply(this.state.community)
+          )) &&
+        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
+        (this.state.neutered === "" ||
+          notice.tags.includes(this.state.neutered)) &&
+        (this.state.gender === "" ||
+          notice.tags.includes(" " + this.state.gender)) &&
+        notice.tags.includes(value) &&
+        (this.state.found === "" || !notice.tags.includes(this.state.found))
+      );
     });
+
+    console.log(s);
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       species: value,
-      notices: s,
+      filtered: s,
       suggestions: curr,
       hasSuggestions: display
     });
@@ -138,17 +173,36 @@ class NoticeFormPage extends Component {
   }
 
   handleColourChange(event) {
+    // var s = [];
+    // for (var i = 0; i < this.state.notices.length; i++) {
+    //   if (this.state.notices[i].tags.includes(event.target.value)) {
+    //     s.push(this.state.notices[i]);
+    //   }
+    // }
     var s = [];
-    for (var i = 0; i < this.state.notices.length; i++) {
-      if (this.state.notices[i].tags.includes(event.target.value)) {
-        s.push(this.state.notices[i]);
-      }
-    }
+    s = this.state.notices.filter(notice => {
+      return (
+        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+          notice.tags.includes(
+            String.prototype.toLowerCase.apply(this.state.community)
+          )) &&
+        (this.state.species === "" ||
+          notice.tags.includes(this.state.species)) &&
+        (this.state.neutered === "" ||
+          notice.tags.includes(this.state.neutered)) &&
+        (this.state.gender === "" ||
+          notice.tags.includes(" " + this.state.gender)) &&
+        notice.tags.includes(event.target.value) &&
+        (this.state.found === "" || !notice.tags.includes(this.state.found))
+      );
+    });
+
+    console.log(s);
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       colour: event.target.value,
-      notices: s,
+      filtered: s,
       suggestions: curr,
       hasSuggestions: display
     });
@@ -181,21 +235,34 @@ class NoticeFormPage extends Component {
   }
 
   handleGenderChange(value) {
-    // var s = this.state.notices.filter(notice => {
-    //   return notice.tags.includes(value);
-    // });
+    // var s = [];
+    // for (var i = 0; i < this.state.notices.length; i++) {
+    //   if (this.state.notices[i].tags.includes(value)) {
+    //     s.push(this.state.notices[i]);
+    //   }
+    // }
     var s = [];
-    for (var i = 0; i < this.state.notices.length; i++) {
-      if (this.state.notices[i].tags.includes(value)) {
-        s.push(this.state.notices[i]);
-      }
-    }
-
+    s = this.state.notices.filter(notice => {
+      return (
+        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+          notice.tags.includes(
+            String.prototype.toLowerCase.apply(this.state.community)
+          )) &&
+        (this.state.species === "" ||
+          notice.tags.includes(this.state.species)) &&
+        (this.state.neutered === "" ||
+          notice.tags.includes(this.state.neutered)) &&
+        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
+        notice.tags.includes(" " + value) &&
+        (this.state.found === "" || !notice.tags.includes(this.state.found))
+      );
+    });
+    console.log(s);
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       gender: value,
-      notices: s,
+      filtered: s,
       suggestions: curr,
       hasSuggestions: display
     });
@@ -208,14 +275,31 @@ class NoticeFormPage extends Component {
   }
 
   handleNeuteredChange(event) {
+    // var s = [];
+    // for (var i = 0; i < this.state.notices.length; i++) {
+    //   if (this.state.notices[i].tags.includes(event.target.value)) {
+    //     s.push(this.state.notices[i]);
+    //   }
+    // }
     var s = [];
-    for (var i = 0; i < this.state.notices.length; i++) {
-      if (this.state.notices[i].tags.includes(event.target.value)) {
-        s.push(this.state.notices[i]);
-      }
-    }
+    s = this.state.notices.filter(notice => {
+      return (
+        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+          notice.tags.includes(
+            String.prototype.toLowerCase.apply(this.state.community)
+          )) &&
+        (this.state.species === "" ||
+          notice.tags.includes(this.state.species)) &&
+        (this.state.gender === "" ||
+          notice.tags.includes(" " + this.state.gender)) &&
+        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
+        notice.tags.includes(event.target.value) &&
+        (this.state.found === "" || !notice.tags.includes(this.state.found))
+      );
+    });
+    console.log(s);
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       neutered: event.target.value,
       notices: s,
@@ -227,15 +311,34 @@ class NoticeFormPage extends Component {
   }
 
   handleFoundChange(value) {
-    var s = this.state.notices.filter(notice => {
-      // If the person lost the dog, we're looking for found notices and vice versa
-      return !notice.tags.includes(value);
+    // var s = this.state.notices.filter(notice => {
+    //   // If the person lost the dog, we're looking for found notices and vice versa
+    //   return !notice.tags.includes(value);
+    // });
+    var s = [];
+    s = this.state.notices.filter(notice => {
+      return (
+        (this.state.community === "" ||
+          notice.tags.includes(
+            String.prototype.toLowerCase.apply(this.state.community)
+          )) &&
+        (this.state.species === "" ||
+          notice.tags.includes(this.state.species)) &&
+        (this.state.gender === "" ||
+          notice.tags.includes(" " + this.state.gender)) &&
+        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
+        !notice.tags.includes(value) &&
+        (this.state.neutered === "" ||
+          notice.tags.includes(this.state.neutered))
+      );
     });
+    console.log(s);
+
     var curr = this.state.suggestions + 1;
-    var display = curr >= 4;
+    var display = curr >= 4 && s.length > 0;
     this.setState({
       found: value,
-      notices: s,
+      filtered: s,
       suggestions: curr,
       hasSuggestions: display
     });
@@ -544,7 +647,10 @@ class NoticeFormPage extends Component {
                   <Row>
                     <Col xs="12" md="2" />
                     <Col xs="12" md="10">
-                      {this.state.notices.map(notice => {
+                      <h4 className="text-center">
+                        Pets that match this description:
+                      </h4>
+                      {this.state.filtered.map(notice => {
                         return (
                           <div>
                             <Notice
