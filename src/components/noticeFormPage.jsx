@@ -59,6 +59,7 @@ class NoticeFormPage extends Component {
     this.loadPage = this.loadPage.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
   }
+
   async uploadImage(picNo, e) {
     const r = new XMLHttpRequest();
     const d = new FormData();
@@ -95,11 +96,6 @@ class NoticeFormPage extends Component {
 
   handleCommunityChange(event) {
     var s = [];
-    // for (var i = 0; i < this.state.notices.length; i++) {
-    //   if (this.state.notices[i].community === event.target.value) {
-    //     s.push(this.state.notices[i]);
-    //   }
-    // }
     s = this.state.notices.filter(notice => {
       return (
         (this.state.species === "" ||
@@ -139,9 +135,6 @@ class NoticeFormPage extends Component {
     console.log(this.state);
   }
   handleSpeciesChange(value) {
-    // var s = this.state.notices.filter(notice => {
-    //   return notice.tags.includes(value);
-    // });
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
@@ -173,12 +166,6 @@ class NoticeFormPage extends Component {
   }
 
   handleColourChange(event) {
-    // var s = [];
-    // for (var i = 0; i < this.state.notices.length; i++) {
-    //   if (this.state.notices[i].tags.includes(event.target.value)) {
-    //     s.push(this.state.notices[i]);
-    //   }
-    // }
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
@@ -218,7 +205,6 @@ class NoticeFormPage extends Component {
     this.setState({ pic2: event.target.files[0] });
     console.log(this.state);
   }
-
   handlePic3Change(event) {
     this.setState({ pic3: event.target.files[0] });
     console.log(this.state);
@@ -235,12 +221,6 @@ class NoticeFormPage extends Component {
   }
 
   handleGenderChange(value) {
-    // var s = [];
-    // for (var i = 0; i < this.state.notices.length; i++) {
-    //   if (this.state.notices[i].tags.includes(value)) {
-    //     s.push(this.state.notices[i]);
-    //   }
-    // }
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
@@ -275,12 +255,6 @@ class NoticeFormPage extends Component {
   }
 
   handleNeuteredChange(event) {
-    // var s = [];
-    // for (var i = 0; i < this.state.notices.length; i++) {
-    //   if (this.state.notices[i].tags.includes(event.target.value)) {
-    //     s.push(this.state.notices[i]);
-    //   }
-    // }
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
@@ -311,10 +285,6 @@ class NoticeFormPage extends Component {
   }
 
   handleFoundChange(value) {
-    // var s = this.state.notices.filter(notice => {
-    //   // If the person lost the dog, we're looking for found notices and vice versa
-    //   return !notice.tags.includes(value);
-    // });
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
