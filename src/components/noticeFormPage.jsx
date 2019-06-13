@@ -138,7 +138,7 @@ class NoticeFormPage extends Component {
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
-        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+        (this.state.community === "" ||
           notice.tags.includes(
             String.prototype.toLowerCase.apply(this.state.community)
           )) &&
@@ -169,7 +169,7 @@ class NoticeFormPage extends Component {
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
-        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+        (this.state.community === "" ||
           notice.tags.includes(
             String.prototype.toLowerCase.apply(this.state.community)
           )) &&
@@ -222,21 +222,40 @@ class NoticeFormPage extends Component {
 
   handleGenderChange(value) {
     var s = [];
-    s = this.state.notices.filter(notice => {
-      return (
-        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
-          notice.tags.includes(
-            String.prototype.toLowerCase.apply(this.state.community)
-          )) &&
-        (this.state.species === "" ||
-          notice.tags.includes(this.state.species)) &&
-        (this.state.neutered === "" ||
-          notice.tags.includes(this.state.neutered)) &&
-        (this.state.colour === "" || notice.tags.includes(this.state.colour)) &&
-        notice.tags.includes(" " + value) &&
-        (this.state.found === "" || !notice.tags.includes(this.state.found))
-      );
-    });
+    if (value === "male female") {
+      s = this.state.notices.filter(notice => {
+        return (
+          (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+            notice.tags.includes(
+              String.prototype.toLowerCase.apply(this.state.community)
+            )) &&
+          (this.state.species === "" ||
+            notice.tags.includes(this.state.species)) &&
+          (this.state.neutered === "" ||
+            notice.tags.includes(this.state.neutered)) &&
+          (this.state.colour === "" ||
+            notice.tags.includes(this.state.colour)) &&
+          (this.state.found === "" || !notice.tags.includes(this.state.found))
+        );
+      });
+    } else {
+      s = this.state.notices.filter(notice => {
+        return (
+          (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+            notice.tags.includes(
+              String.prototype.toLowerCase.apply(this.state.community)
+            )) &&
+          (this.state.species === "" ||
+            notice.tags.includes(this.state.species)) &&
+          (this.state.neutered === "" ||
+            notice.tags.includes(this.state.neutered)) &&
+          (this.state.colour === "" ||
+            notice.tags.includes(this.state.colour)) &&
+          notice.tags.includes(" " + value) &&
+          (this.state.found === "" || !notice.tags.includes(this.state.found))
+        );
+      });
+    }
     console.log(s);
     var curr = this.state.suggestions + 1;
     var display = curr >= 4 && s.length > 0;
@@ -258,7 +277,7 @@ class NoticeFormPage extends Component {
     var s = [];
     s = this.state.notices.filter(notice => {
       return (
-        (String.prototype.toLowerCase.apply(this.state.community) === "" ||
+        (this.state.community === "" ||
           notice.tags.includes(
             String.prototype.toLowerCase.apply(this.state.community)
           )) &&
