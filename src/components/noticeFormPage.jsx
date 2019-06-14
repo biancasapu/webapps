@@ -12,6 +12,12 @@ import {
   Row,
   ButtonGroup
 } from "reactstrap";
+import cat from "../img/transparentcat.png"
+import dog from "../img/transparentdog.png"
+import bird from "../img/transparentbird.png"
+import female from "../img/transparentfem.png"
+import male from "../img/transparentmale.png"
+import unknown from "../img/transparentunkn.png"
 
 class NoticeFormPage extends Component {
   _isMounted = false;
@@ -418,19 +424,9 @@ class NoticeFormPage extends Component {
       <div style={{ background: "#e6e6ca", fontSize: "20px" }}>
         <Container style={{ paddingTop: "20px" }}>
           <Form>
+            
             <FormGroup row>
-              <Label sm={2}> Title of Notice </Label>
-              <Col sm={10}>
-                <Input
-                  placeholder="What is this notice called?"
-                  name="title"
-                  value={this.state.title}
-                  onChange={this.handleTitleChange}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label sm={2}>Community</Label>
+              <Label sm={2}>City</Label>
               <Col sm={10}>
                 <Input
                   type="select"
@@ -451,7 +447,7 @@ class NoticeFormPage extends Component {
             <Container>
               <Row>
                 <Col sm={12} md={3} style={{ padding: "0%" }}>
-                  <Label style={{ paddingTop: "30px" }}>This pet is</Label>
+                  <Label style={{ paddingTop: "10px" }}>This pet is</Label>
                 </Col>
 
                 <Col sm={12} md={9} style={{ textAlign: "center" }}>
@@ -462,7 +458,9 @@ class NoticeFormPage extends Component {
                       size="lg"
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        paddingLeft: "30px",
+                        paddingRight: "30px"
                       }}
                     >
                       Lost
@@ -472,7 +470,9 @@ class NoticeFormPage extends Component {
                       size="lg"
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        paddingLeft: "30px",
+                        paddingRight: "30px"
                       }}
                       onClick={() => this.handleFoundChange("found")}
                     >
@@ -487,7 +487,7 @@ class NoticeFormPage extends Component {
             <Container style={{ padding: "10px" }}>
               <Row>
                 <Col sm={12} md={3} style={{ padding: "0%" }}>
-                  <Label style={{ paddingTop: "30px" }}>Species</Label>
+                  <Label style={{ paddingTop: "15px" }}>Species</Label>
                 </Col>
                 <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
@@ -497,35 +497,35 @@ class NoticeFormPage extends Component {
                       active={this.state.species === "dog"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                     >
-                      {" "}
-                      Dog{" "}
+                      <img src={dog} style={{width: "20%"}}/> Dog
                     </Button>
                     <Button
                       size="lg"
                       active={this.state.species === "cat"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                       onClick={() => this.handleSpeciesChange("cat")}
                     >
-                      {" "}
-                      Cat{" "}
+                      <img src={cat} style={{width: "20%"}}/> Cat
                     </Button>
                     <Button
                       size="lg"
                       active={this.state.species === "bird"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                       onClick={() => this.handleSpeciesChange("bird")}
                     >
-                      {" "}
-                      Bird{" "}
+                      <img src={bird} style={{width: "20%"}}/> Bird
                     </Button>
                     <Button
                       size="lg"
@@ -536,8 +536,7 @@ class NoticeFormPage extends Component {
                         backgroundColor: "#95c18f"
                       }}
                     >
-                      {" "}
-                      Other{" "}
+                      Other
                     </Button>
                   </ButtonGroup>
                 </Col>
@@ -548,7 +547,7 @@ class NoticeFormPage extends Component {
             <Container style={{ paddingBottom: "15px" }}>
               <Row>
                 <Col sm={12} md={3} style={{ padding: "0%" }}>
-                  <Label style={{ paddingTop: "20px" }}>Gender</Label>
+                  <Label style={{ paddingTop: "10px" }}>Gender</Label>
                 </Col>
                 <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
@@ -558,35 +557,35 @@ class NoticeFormPage extends Component {
                       active={this.state.gender === "female"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                     >
-                      {" "}
-                      Female{" "}
+                      <img src={female} style={{width: "18%"}}/> Female
                     </Button>
                     <Button
                       size="lg"
                       active={this.state.gender === "male"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                       onClick={() => this.handleGenderChange("male")}
                     >
-                      {" "}
-                      Male{" "}
+                      <img src={male} style={{width: "18%"}}/> Male
                     </Button>
                     <Button
                       size="lg"
                       active={this.state.gender === "male female"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        backgroundColor: "#95c18f",
+                        padding: "0%"
                       }}
                       onClick={() => this.handleGenderChange("male female")}
                     >
-                      {" "}
-                      Unknown{" "}
+                      <img src={unknown} style={{width: "18%"}}/>
                     </Button>
                   </ButtonGroup>
                 </Col>
@@ -663,6 +662,17 @@ class NoticeFormPage extends Component {
                 </Container>
               </div>
             </Alert>
+            <FormGroup row>
+              <Label sm={2}> Title of Notice </Label>
+              <Col sm={10}>
+                <Input
+                  placeholder="What is this notice called?"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleTitleChange}
+                />
+              </Col>
+            </FormGroup>
             <FormGroup row>
               <Label sm={2}> Description of pet</Label>
 
