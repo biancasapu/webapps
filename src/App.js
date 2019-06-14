@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/header";
+import "./App.css"
 //import GoogleApiWrapper from "./components/mapsAPI";
 require("dotenv").config();
 class App extends Component {
