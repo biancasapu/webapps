@@ -12,12 +12,12 @@ import {
   Row,
   ButtonGroup
 } from "reactstrap";
-import cat from "../img/transparentcat.png"
-import dog from "../img/transparentdog.png"
-import bird from "../img/transparentbird.png"
-import female from "../img/transparentfem.png"
-import male from "../img/transparentmale.png"
-import unknown from "../img/transparentunkn.png"
+import cat from "../img/transparentcat.png";
+import dog from "../img/transparentdog.png";
+import bird from "../img/transparentbird.png";
+import female from "../img/transparentfem.png";
+import male from "../img/transparentmale.png";
+import unknown from "../img/transparentunkn.png";
 
 class NoticeFormPage extends Component {
   _isMounted = false;
@@ -42,7 +42,8 @@ class NoticeFormPage extends Component {
       notices: [],
       filtered: [],
       hasSuggestions: false,
-      suggestions: 0
+      suggestions: 0,
+      seenby: 0
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -388,7 +389,8 @@ class NoticeFormPage extends Component {
               String.prototype.toLowerCase.apply(this.state.community),
             pic1: this.state.pic1,
             pic2: this.state.pic2,
-            pic3: this.state.pic3
+            pic3: this.state.pic3,
+            seenby: this.state.seen
           })
         });
 
@@ -424,7 +426,6 @@ class NoticeFormPage extends Component {
       <div style={{ background: "#e6e6ca", fontSize: "20px" }}>
         <Container style={{ paddingTop: "20px" }}>
           <Form>
-            
             <FormGroup row>
               <Label sm={2}>City</Label>
               <Col sm={10}>
@@ -501,7 +502,7 @@ class NoticeFormPage extends Component {
                         padding: "0%"
                       }}
                     >
-                      <img src={dog} style={{width: "20%"}}/> Dog
+                      <img src={dog} style={{ width: "20%" }} /> Dog
                     </Button>
                     <Button
                       size="lg"
@@ -513,7 +514,7 @@ class NoticeFormPage extends Component {
                       }}
                       onClick={() => this.handleSpeciesChange("cat")}
                     >
-                      <img src={cat} style={{width: "20%"}}/> Cat
+                      <img src={cat} style={{ width: "20%" }} /> Cat
                     </Button>
                     <Button
                       size="lg"
@@ -525,7 +526,7 @@ class NoticeFormPage extends Component {
                       }}
                       onClick={() => this.handleSpeciesChange("bird")}
                     >
-                      <img src={bird} style={{width: "20%"}}/> Bird
+                      <img src={bird} style={{ width: "20%" }} /> Bird
                     </Button>
                     <Button
                       size="lg"
@@ -561,7 +562,7 @@ class NoticeFormPage extends Component {
                         padding: "0%"
                       }}
                     >
-                      <img src={female} style={{width: "18%"}}/> Female
+                      <img src={female} style={{ width: "18%" }} /> Female
                     </Button>
                     <Button
                       size="lg"
@@ -573,7 +574,7 @@ class NoticeFormPage extends Component {
                       }}
                       onClick={() => this.handleGenderChange("male")}
                     >
-                      <img src={male} style={{width: "18%"}}/> Male
+                      <img src={male} style={{ width: "18%" }} /> Male
                     </Button>
                     <Button
                       size="lg"
@@ -585,7 +586,7 @@ class NoticeFormPage extends Component {
                       }}
                       onClick={() => this.handleGenderChange("male female")}
                     >
-                      <img src={unknown} style={{width: "18%"}}/>
+                      <img src={unknown} style={{ width: "18%" }} />
                     </Button>
                   </ButtonGroup>
                 </Col>
