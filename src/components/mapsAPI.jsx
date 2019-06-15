@@ -2,7 +2,7 @@ import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
 import React from "react";
 import { Card, CardText, CardBody, CardHeader } from "reactstrap";
-
+import animalMapMarker from "../img/animalMapMarker.png";
 import CardPictureList from "./cardPictureList";
 
 class GoogleMapsContainer extends React.Component {
@@ -45,6 +45,7 @@ class GoogleMapsContainer extends React.Component {
         <Marker
           key={index}
           id={index}
+          icon={animalMapMarker}
           noticeid={store.id}
           position={{
             lat: store.latitude,
