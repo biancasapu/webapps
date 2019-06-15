@@ -654,6 +654,7 @@ class NoticeFormPage extends Component {
                               pic3={notice.pic3}
                               contact={notice.contact}
                               lastSeen={notice.lastseen}
+                              seenby={notice.seenby}
                             />
                           </div>
                         );
