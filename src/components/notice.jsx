@@ -28,7 +28,8 @@ class Notice extends Component {
       pic3,
       contact,
       lastSeen,
-      postcode
+      postcode,
+      seenby
     } = this.props;
 
     return (
@@ -42,6 +43,9 @@ class Notice extends Component {
             <CardText>{description}</CardText>
             <CardText> Last Seen: {lastSeen} </CardText>
             <CardText>Contact Information: {contact} </CardText>
+            <CardText className="text-muted">
+              This post has been seen by: {seenby} people
+            </CardText>
             <CardText className="text-muted">{tags}</CardText>
             {/* <Button>Help!</Button> */}
           </CardBody>
