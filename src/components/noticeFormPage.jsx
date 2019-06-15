@@ -390,7 +390,7 @@ class NoticeFormPage extends Component {
             pic1: this.state.pic1,
             pic2: this.state.pic2,
             pic3: this.state.pic3,
-            seenby: this.state.seen
+            seenby: this.state.seenby
           })
         });
 
