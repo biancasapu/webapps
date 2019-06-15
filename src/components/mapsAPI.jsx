@@ -45,6 +45,7 @@ class GoogleMapsContainer extends React.Component {
         <Marker
           key={index}
           id={index}
+          noticeid={store.id}
           position={{
             lat: store.latitude,
             lng: store.longitude
@@ -93,6 +94,10 @@ class GoogleMapsContainer extends React.Component {
   };
 
   onMarkerClick = (props, marker, e) => {
+    fetch("https://webapps05backend.herokuapp.com/hit/" + props.noticeid);
+    console.log(props);
+    console.log(marker);
+    console.log(e);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
