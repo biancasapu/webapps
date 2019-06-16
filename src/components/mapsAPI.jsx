@@ -131,6 +131,7 @@ class GoogleMapsContainer extends React.Component {
       marginRight: "auto"
     };
     return (
+      // You should be able to remove this Map element, I've done it and nothing happens
       <Map
         item
         xs={12}
