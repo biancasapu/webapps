@@ -89,7 +89,7 @@ class LostFoundPage extends Component {
     var noticeArr = <Container>{not}</Container>;
 
     return (
-      <div style={{ background: "#e6e6ca" }}>
+      <div style={{ background: "#bdecb6" }}>
         <div>{searchBar}</div>
         <div>{noticeArr}</div>
       </div>

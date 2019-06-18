@@ -12,7 +12,7 @@ import {
 class SplashPage extends Component {
   render() {
     return (
-      <div style={{ background: "#e6e6ca" }}>
+      <div style={{ background: "#bdecb6" }}>
         <Container>
           <Card style={{ fontFamily: "Georgia, serif" }}>
             <CardHeader tag="h3" style={{ textAlign: "center" }}>

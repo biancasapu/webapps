@@ -423,14 +423,14 @@ class NoticeFormPage extends Component {
 
   render() {
     return (
-      <div style={{ background: "#e6e6ca", fontSize: "20px" }}>
+      <div style={{ background: "#bdecb6", fontSize: "20px" }}>
         <Container style={{ paddingTop: "20px" }}>
           <Form>
             <FormGroup row>
               <Label sm={2}>City</Label>
               <Col sm={10}>
                 <Input
-                  type="select"
+                  type="danger"
                   name="community"
                   placeholder="choose"
                   value={this.state.community}
@@ -467,7 +467,7 @@ class NoticeFormPage extends Component {
                       Lost
                     </Button>
                     <Button
-                     color="success"
+                      color="success"
                       active={this.state.found === "found"}
                       size="lg"
                       style={{
@@ -598,7 +598,7 @@ class NoticeFormPage extends Component {
               <Label sm={2}> Colour </Label>
               <Col sm={4}>
                 <Input
-                  type="select"
+                  type="warning"
                   name="colour"
                   value={this.state.colour}
                   onChange={this.handleColourChange}
@@ -615,7 +615,7 @@ class NoticeFormPage extends Component {
               <Label sm={2}> Neutered </Label>
               <Col sm={4}>
                 <Input
-                  type="select"
+                  type="warning"
                   name="neutered"
                   value={this.state.neutered}
                   onChange={this.handleNeuteredChange}
