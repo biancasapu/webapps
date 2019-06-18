@@ -1,7 +1,7 @@
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import CurrentLocation from "./maps";
 import React from "react";
-import { Card, CardText, CardBody, CardHeader } from "reactstrap";
+import { Card, CardText, CardBody, CardHeader, Alert } from "reactstrap";
 import animalMapMarker from "../img/animalMapMarker.png";
 import CardPictureList from "./cardPictureList";
 import userMapMarker from "../img/userIconMarker.png";
@@ -162,30 +162,57 @@ class GoogleMapsContainer extends React.Component {
     };
     return (
       // You should be able to remove this Map element, I've done it and nothing happens
-      <Map
-        item
-        xs={12}
-        style={style}
-        google={this.props.google}
-        onClick={this.onMapClick}
-        zoom={14}
-        initialCenter={{ lat: 51.4997265, lng: -0.18323 }}
+      <div
+        style={{
+          background: "#e8e8e8",
+          margin: "0px"
+        }}
       >
-        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-          {this.displayMarkers()}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
+        <Alert
+          style={{ margin: "0px" }}
+          color="#e8e8e8"
+          isOpen={true}
+          toggle={this.onDismiss}
+        >
+          <p
+            style={{
+              fontFamily: "Georgia, serif",
+              margin: "0px",
+              textAlign: "center"
+            }}
           >
-            <div>
-              <h2>{this.state.selectedPlace.markerInfoWindow}</h2>
-            </div>
-          </InfoWindow>
+            Active users in your area: 5
+          </p>
+        </Alert>
+        <Map
+          style={{ margin: "0px" }}
+          item
+          xs={12}
+          style={style}
+          google={this.props.google}
+          onClick={this.onMapClick}
+          zoom={14}
+          initialCenter={{ lat: 51.4997265, lng: -0.18323 }}
+        >
+          <CurrentLocation
+            centerAroundCurrentLocation
+            google={this.props.google}
+          >
+            {this.displayMarkers()}
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            >
+              <div>
+                <h2>{this.state.selectedPlace.markerInfoWindow}</h2>
+              </div>
+            </InfoWindow>
 
-          {/*  */}
-        </CurrentLocation>
-      </Map>
+            {/*  */}
+          </CurrentLocation>
+        </Map>
+      </div>
     );
   }
 }
