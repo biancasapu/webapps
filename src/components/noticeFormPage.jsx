@@ -454,25 +454,25 @@ class NoticeFormPage extends Component {
                 <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
                     <Button
+                      color="success"
                       onClick={() => this.handleFoundChange("lost")}
                       active={this.state.found === "lost"}
                       size="lg"
                       style={{
-                        borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         paddingLeft: "30px",
+                        borderColor: "#634839",
                         paddingRight: "30px"
                       }}
                     >
                       Lost
                     </Button>
                     <Button
+                     color="success"
                       active={this.state.found === "found"}
                       size="lg"
                       style={{
-                        borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         paddingLeft: "30px",
+                        borderColor: "#634839",
                         paddingRight: "30px"
                       }}
                       onClick={() => this.handleFoundChange("found")}
@@ -493,12 +493,12 @@ class NoticeFormPage extends Component {
                 <Col sm={12} md={9} style={{ textAlign: "center" }}>
                   <ButtonGroup>
                     <Button
+                      color="success"
                       size="lg"
                       onClick={() => this.handleSpeciesChange("dog")}
                       active={this.state.species === "dog"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                     >
@@ -506,10 +506,10 @@ class NoticeFormPage extends Component {
                     </Button>
                     <Button
                       size="lg"
+                      color="success"
                       active={this.state.species === "cat"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                       onClick={() => this.handleSpeciesChange("cat")}
@@ -518,10 +518,10 @@ class NoticeFormPage extends Component {
                     </Button>
                     <Button
                       size="lg"
+                      color="success"
                       active={this.state.species === "bird"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                       onClick={() => this.handleSpeciesChange("bird")}
@@ -530,11 +530,11 @@ class NoticeFormPage extends Component {
                     </Button>
                     <Button
                       size="lg"
+                      color="success"
                       onClick={() => this.handleSpeciesChange("other")}
                       active={this.state.species === "other"}
                       style={{
-                        borderColor: "#634839",
-                        backgroundColor: "#95c18f"
+                        borderColor: "#634839"
                       }}
                     >
                       Other
@@ -554,11 +554,11 @@ class NoticeFormPage extends Component {
                   <ButtonGroup>
                     <Button
                       size="lg"
+                      color="success"
                       onClick={() => this.handleGenderChange("female")}
                       active={this.state.gender === "female"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                     >
@@ -566,10 +566,10 @@ class NoticeFormPage extends Component {
                     </Button>
                     <Button
                       size="lg"
+                      color="success"
                       active={this.state.gender === "male"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                       onClick={() => this.handleGenderChange("male")}
@@ -578,10 +578,10 @@ class NoticeFormPage extends Component {
                     </Button>
                     <Button
                       size="lg"
+                      color="success"
                       active={this.state.gender === "male female"}
                       style={{
                         borderColor: "#634839",
-                        backgroundColor: "#95c18f",
                         padding: "0%"
                       }}
                       onClick={() => this.handleGenderChange("male female")}
