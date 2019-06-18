@@ -762,17 +762,17 @@ class NoticeFormPage extends Component {
                 />
               </Col>
             </FormGroup>
+            <Alert
+              color="success"
+              isOpen={this.state.visible}
+              toggle={this.onDismiss}
+            >
+              Submitting your notice...
+            </Alert>
             <FormGroup>
               <Button onClick={this.handleSubmit}>Submit</Button>
             </FormGroup>
           </Form>
-          <Alert
-            color="success"
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}
-          >
-            Submitting your notice...
-          </Alert>
         </Container>
       </div>
     );
