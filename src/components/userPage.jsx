@@ -16,6 +16,8 @@ class UserPage extends Component {
     return (
       <div style={{ background: "#e6e6ca" }}>
       <Container>
+        <h2 style={{ paddingTop: "20px", textAlign: "center" }}>Bianca's pets</h2>
+        <h3 style={{ textAlign: "center" }}>Area: Fullham, London</h3>
         <div key="0" style={{ marginBottom: "20px" }}>
         <Card style={{ fontFamily: "Georgia, serif" }}>
           <CardHeader tag="h3">Shaquille</CardHeader>
@@ -23,9 +25,10 @@ class UserPage extends Component {
           pic2="https://i2.wp.com/metro.co.uk/wp-content/uploads/2018/01/pri_67398556-e1517293442112.jpg?quality=90&strip=all&zoom=1&resize=644%2C397&ssl=1" />
           <CardBody>
             <CardSubtitle>Black Cat</CardSubtitle>
-            <CardText> Age: 14 </CardText>
+            <CardText> Age: 14 years</CardText>
+            <CardText> Female </CardText>
             <CardText> Neutered </CardText>
-            <CardText>My first cat. She has done all vaccinations. Only eats Royal Canin. Very mean with new people,
+            <CardText>Indoor cat. My first cat. She has done all vaccinations. Only eats Royal Canin. Very mean with new people,
               her favourite owner is my dad.
             </CardText>
             <Button>Edit</Button> {/* lol this shouldnt do anythin its proof of conc */}
@@ -34,13 +37,17 @@ class UserPage extends Component {
       </div>
       <div key="1" style={{ marginBottom: "20px" }}>
         <Card style={{ fontFamily: "Georgia, serif" }}>
-          <CardHeader tag="h3">Pet 2</CardHeader>
-          <CardPictureList pic1="https://pbs.twimg.com/media/D9RL-jHXkAEc1ST.jpg" />
+          <CardHeader tag="h3">Misha</CardHeader>
+          <CardPictureList pic1="https://cdn.images.express.co.uk/img/dynamic/128/590x/Cat-631987.jpg" />
           <CardBody>
-            <CardSubtitle>Pet 2 species</CardSubtitle>
-            <CardText> Birthday: 2nd May </CardText>
-            <CardText>Description..... Vaccinations done: hakakksjdsjdjdkw</CardText>
-            <Button>Edit</Button> {/* lol this shouldnt do anythin its proof of conc */}
+            <CardSubtitle>Black & white cat</CardSubtitle>
+            <CardText> Age: 1 year </CardText>
+            <CardText> Female </CardText>
+            <CardText> Intact </CardText>
+            <CardText>Stray found in August 2018. Outdoor cat. Very friendly with everyone, somewhat hyperactive.
+              Fleas are dealt with, should start vaccines in July.
+            </CardText>
+            <Button>Edit</Button>
           </CardBody>
         </Card>
       </div>
