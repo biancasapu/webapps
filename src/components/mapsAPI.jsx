@@ -4,7 +4,7 @@ import React from "react";
 import { Card, CardText, CardBody, CardHeader } from "reactstrap";
 import animalMapMarker from "../img/animalMapMarker.png";
 import CardPictureList from "./cardPictureList";
-
+import userMapMarker from "../img/userIconMarker.png";
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,8 @@ class GoogleMapsContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      stores: []
+      stores: [],
+      userstores: []
     };
 
     this.loadPage = this.loadPage.bind(this);
@@ -40,65 +41,94 @@ class GoogleMapsContainer extends React.Component {
   }
 
   displayMarkers = () => {
+    console.log(this.state.stores);
     return this.state.stores.map((store, index) => {
-      return (
-        <Marker
-          key={index}
-          id={index}
-          icon={animalMapMarker}
-          noticeid={store.id}
-          position={{
-            lat: store.latitude,
-            lng: store.longitude
-          }}
-          onClick={this.onMarkerClick}
-          markerInfoWindow={
-            <div>
-              {/* <h5>{store.title}</h5>
-              <CardPictureList
-                pic1={store.pic1}
-                pic2={store.pic2}
-                pic3={store.pic3}
-              />
-              <h5>{store.description}</h5>
-              <h6 className="text-muted">{store.tags}</h6> */}
-              <Card style={{ fontFamily: "Georgia, serif", fontSize: "15px" }}>
-                <CardHeader tag="h3">{store.title}</CardHeader>
-                <CardPictureList
-                  pic1={store.pic1}
-                  pic2={store.pic2}
-                  pic3={store.pic3}
-                />
-                <CardBody>
-                  <CardText>{store.description}</CardText>
-                  <CardText>{"Last seen: " + store.lastseen}</CardText>
-                  <CardText>{"In: " + store.pct}</CardText>
-                  <CardText>{"Contact  : " + store.contact}</CardText>
-                </CardBody>
-                <CardBody>
-                  <CardText className="text-muted">
-                    {"This post has been seen by: " + store.seenby + " people"}
-                  </CardText>
-                  <CardText style={{ fontSize: "10px" }} className="text-muted">
-                    {store.tags}
-                  </CardText>
-                  {/* <Button>Help!</Button> */}
-                </CardBody>
-              </Card>
-            </div>
-          }
-          name={store.id}
-          //onClick={() => console.log("You clicked me!")}
-        />
-      );
+      if (store.hasOwnProperty("isuser")) {
+        //console.log(store);
+        return (
+          <Marker
+            key={index}
+            id={index}
+            icon={userMapMarker}
+            position={{
+              lat: store.latitude,
+              lng: store.longitude
+            }}
+            onClick={this.onMarkerClick}
+            markerInfoWindow={
+              <div>
+                <Card
+                  style={{ fontFamily: "Georgia, serif", fontSize: "15px" }}
+                >
+                  <CardHeader tag="h3">{store.title}</CardHeader>
+                  <CardBody>
+                    <CardText>{store.description}</CardText>
+                    <CardText>{"Contact  : " + store.contact}</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            }
+            name={store.userid}
+            //onClick={() => console.log("You clicked me!")}
+          />
+        );
+      } else {
+        return (
+          <Marker
+            key={index}
+            id={index}
+            icon={animalMapMarker}
+            position={{
+              lat: store.latitude,
+              lng: store.longitude
+            }}
+            onClick={this.onMarkerClick}
+            markerInfoWindow={
+              <div>
+                <Card
+                  style={{ fontFamily: "Georgia, serif", fontSize: "15px" }}
+                >
+                  <CardHeader tag="h3">{store.title}</CardHeader>
+                  <CardPictureList
+                    pic1={store.pic1}
+                    pic2={store.pic2}
+                    pic3={store.pic3}
+                  />
+                  <CardBody>
+                    <CardText>{store.description}</CardText>
+                    <CardText>{"Last seen: " + store.lastseen}</CardText>
+                    <CardText>{"In: " + store.pct}</CardText>
+                    <CardText>{"Contact  : " + store.contact}</CardText>
+                  </CardBody>
+                  <CardBody>
+                    <CardText className="text-muted">
+                      {"This post has been seen by: " +
+                        store.seenby +
+                        " people"}
+                    </CardText>
+                    <CardText
+                      style={{ fontSize: "10px" }}
+                      className="text-muted"
+                    >
+                      {store.tags}
+                    </CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            }
+            name={store.id}
+            //onClick={() => console.log("You clicked me!")}
+          />
+        );
+      }
     });
   };
 
   onMarkerClick = (props, marker, e) => {
     fetch("https://webapps05backend.herokuapp.com/hit/" + props.noticeid);
-    console.log(props);
-    console.log(marker);
-    console.log(e);
+    // console.log(props);
+    // console.log(marker);
+    // console.log(e);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,

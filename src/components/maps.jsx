@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { thisExpression } from "@babel/types";
 const mapStyles = {
   map: {
     position: "absolute",
@@ -13,11 +14,15 @@ export class CurrentLocation extends React.Component {
     super(props);
 
     const { lat, lng } = this.props.initialCenter;
+    //const str = this.props.stores;
+    //console.log(props.stores);
     this.state = {
       currentLocation: {
         lat: lat,
         lng: lng
-      }
+      },
+      stores: [],
+      circles: []
     };
   }
 
@@ -52,6 +57,28 @@ export class CurrentLocation extends React.Component {
     }
   }
 
+  // displayCircles = () => {
+  //   return this.state.stores.map((store, index) => {
+  //     return (
+  //       <Circle
+  //         radius={600}
+  //         fillColor={"#AA0000"}
+  //         position={{
+  //           lat: store.latitude,
+  //           lng: store.longitude
+  //         }}
+  //         name={store.id}
+  //       />
+  //     );
+  //   });
+  // };
+
+  displayCircles() {
+    //console.log("Im here");
+    for (var i = 0; i < this.state.stores.length; ++i) {
+      console.log(this.state.stores[i]);
+    }
+  }
   /* Next, we need to handle the instance when the map has already loaded.This will be handled by 
   the componentDidMount() Lifecycle method which will set a call back to fetch the current location.
   */
@@ -123,6 +150,7 @@ export class CurrentLocation extends React.Component {
           Loading map...
         </div>
         {this.renderChildren()}
+        {this.displayCircles()}
       </div>
     );
   }
@@ -138,6 +166,7 @@ CurrentLocation.defaultProps = {
     lat: 51.4997265,
     lng: -0.18323
   },
+  stores: [],
 
   centerAroundCurrentLocation: false,
   visible: true
