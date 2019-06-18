@@ -25,9 +25,14 @@ class Header extends Component {
               <Col xs="12" md="auto" style={{ textAlign: "center" }}>
                 <NavbarBrand
                   className="logo"
-                  style={{ fontFamily: 'Allerta Stencil', color: "white", margin: "0px", fontSize: "30px" }}
+                  style={{
+                    fontFamily: "Allerta Stencil",
+                    color: "white",
+                    margin: "0px",
+                    fontSize: "30px"
+                  }}
                 >
-                  Petabase
+                  PETBASE
                 </NavbarBrand>
               </Col>
               <Col xs="3" md="auto">

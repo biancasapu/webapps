@@ -16,7 +16,7 @@ class SplashPage extends Component {
         <Container>
           <Card style={{ fontFamily: "Georgia, serif" }}>
             <CardHeader tag="h3" style={{ textAlign: "center" }}>
-              Welcome to Petabase!
+              Welcome to Petbase!
             </CardHeader>
             <CardImg
               className="rounded mx-auto d-block"
