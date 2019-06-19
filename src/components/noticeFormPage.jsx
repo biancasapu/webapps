@@ -426,25 +426,6 @@ class NoticeFormPage extends Component {
       <div style={{ background: "#bdecb6", fontSize: "20px" }}>
         <Container style={{ paddingTop: "20px" }}>
           <Form>
-            <FormGroup row>
-              <Label sm={2}>City</Label>
-              <Col sm={10}>
-                <Input
-                  type="danger"
-                  name="community"
-                  placeholder="choose"
-                  value={this.state.community}
-                  onChange={this.handleCommunityChange}
-                >
-                  <option />
-                  <option>London</option>
-                  <option>Nottingham</option>
-                  <option>Brighton</option>
-                  <option>Birmingham</option>
-                  <option>Liverpool</option>
-                </Input>
-              </Col>
-            </FormGroup>
             <Container>
               <Row>
                 <Col sm={12} md={3} style={{ padding: "0%" }}>
@@ -595,10 +576,29 @@ class NoticeFormPage extends Component {
               </Row>
             </Container>
             <FormGroup row>
+              <Label sm={2}>City</Label>
+              <Col sm={10}>
+                <Input
+                  type="select"
+                  name="community"
+                  placeholder="choose"
+                  value={this.state.community}
+                  onChange={this.handleCommunityChange}
+                >
+                  <option />
+                  <option>London</option>
+                  <option>Nottingham</option>
+                  <option>Brighton</option>
+                  <option>Birmingham</option>
+                  <option>Liverpool</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
               <Label sm={2}> Colour </Label>
               <Col sm={4}>
                 <Input
-                  type="warning"
+                  type="select"
                   name="colour"
                   value={this.state.colour}
                   onChange={this.handleColourChange}
@@ -615,7 +615,7 @@ class NoticeFormPage extends Component {
               <Label sm={2}> Neutered </Label>
               <Col sm={4}>
                 <Input
-                  type="warning"
+                  type="select"
                   name="neutered"
                   value={this.state.neutered}
                   onChange={this.handleNeuteredChange}

@@ -19,7 +19,7 @@ class UserPage extends Component {
           <h2 style={{ paddingTop: "20px", textAlign: "center" }}>
             Bianca's pets
           </h2>
-          <h3 style={{ textAlign: "center" }}>Area: Fullham, London</h3>
+          <h3 style={{ textAlign: "center" }}>Area: Fulham, London</h3>
           <div key="0" style={{ marginBottom: "20px" }}>
             <Card style={{ fontFamily: "Georgia, serif" }}>
               <CardHeader tag="h3">Shaquille</CardHeader>
@@ -37,7 +37,8 @@ class UserPage extends Component {
                   eats Royal Canin. Very mean with new people, her favourite
                   owner is my dad.
                 </CardText>
-                <Button>Edit</Button>{" "}
+                <Button>Edit</Button>
+                <Button>Create notice</Button>
                 {/* lol this shouldnt do anythin its proof of conc */}
               </CardBody>
             </Card>
@@ -57,6 +58,7 @@ class UserPage extends Component {
                   start vaccines in July.
                 </CardText>
                 <Button>Edit</Button>
+                <Button>Create notice</Button>
               </CardBody>
             </Card>
           </div>
