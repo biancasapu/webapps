@@ -44,7 +44,6 @@ class GoogleMapsContainer extends React.Component {
     console.log(this.state.stores);
     return this.state.stores.map((store, index) => {
       if (store.hasOwnProperty("isuser")) {
-        //console.log(store);
         return (
           <Marker
             key={index}
@@ -60,7 +59,12 @@ class GoogleMapsContainer extends React.Component {
                 <Card
                   style={{ fontFamily: "Georgia, serif", fontSize: "15px" }}
                 >
-                  <CardHeader tag="h3">{store.title}</CardHeader>
+                  <CardHeader tag="h3">{store.name}</CardHeader>
+                  <CardPictureList
+                    pic1={store.pic1}
+                    pic2={store.pic2}
+                    pic3={store.pic3}
+                  />
                   <CardBody>
                     <CardText>{store.description}</CardText>
                     <CardText>{"Contact  : " + store.contact}</CardText>
