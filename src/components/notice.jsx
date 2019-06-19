@@ -44,7 +44,7 @@ class Notice extends Component {
             <CardText> Last Seen: {lastSeen} </CardText>
             <CardText>Contact Information: {contact} </CardText>
             <CardText className="text-muted">
-              This post has been seen by: {seenby} people
+              This post has been seen {seenby} times.
             </CardText>
             <CardText className="text-muted">{tags}</CardText>
             {/* <Button>Help!</Button> */}
