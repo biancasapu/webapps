@@ -37,8 +37,8 @@ class UserPage extends Component {
                   eats Royal Canin. Very mean with new people, her favourite
                   owner is my dad.
                 </CardText>
-                <Button>Edit</Button>
-                <Button>Create notice</Button>
+                <Button style={{ marginRight: "10px" }}>Edit</Button>
+                <Button href="/Submit-Page">Create notice</Button>
                 {/* lol this shouldnt do anythin its proof of conc */}
               </CardBody>
             </Card>
@@ -57,8 +57,8 @@ class UserPage extends Component {
                   everyone, somewhat hyperactive. Fleas are dealt with, should
                   start vaccines in July.
                 </CardText>
-                <Button>Edit</Button>
-                <Button>Create notice</Button>
+                <Button style={{ marginRight: "10px" }}>Edit</Button>
+                <Button href="/Submit-Page">Create notice</Button>
               </CardBody>
             </Card>
           </div>
